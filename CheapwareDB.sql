@@ -9,13 +9,6 @@ CREATE TABLE Cheap.Customers
 	Address NVARCHAR(128) NOT NULL,
 );
 
---DROP TABLE Cheap.Locations
-CREATE TABLE Cheap.Locations
-(
-	StoreNumber INT IDENTITY NOT NULL,
-	
-);
-
 CREATE TABLE Cheap.Inventory
 (
 	Name NVARCHAR(128) NOT NULL,
@@ -35,9 +28,10 @@ CREATE TABLE Cheap.CPU
 	Img NVARCHAR(128) NOT NULL
 );
 
+--DROP TABLE Cheap.PowerSupply
 CREATE TABLE Cheap.PowerSupply
 (
-	PowerSupply INT IDENTITY,
+	PowerSupplyId INT IDENTITY,
 	Name NVARCHAR(128),
 	Watage NVARCHAR(128),
 	Modular NVARCHAR(128),
@@ -55,6 +49,7 @@ CREATE TABLE Cheap.GraphicsCard
 	Img NVARCHAR(128) NOT NULL
 );
 
+--DROP TABLE Cheap.HardDrive
 CREATE TABLE Cheap.HardDrive
 (
 	HardDriveId INT IDENTITY NOT NULL,
@@ -62,6 +57,7 @@ CREATE TABLE Cheap.HardDrive
 	Speed NVARCHAR(128) NOT NULL,
 	Size NVARCHAR(128) NOT NULL,
 	Category NVARCHAR(128) NOT NULL,
+	Price Money NOT NULL,
 	Img NVARCHAR(128) NOT NULL
 )
 
@@ -95,9 +91,7 @@ CREATE TABLE Cheap.ComputerCase
 	Img NVARCHAR(128) NOT NULL
 )
 
-
-
---DROP TABLE PizzaStore.Orders
+--DROP TABLE 
 CREATE TABLE Cheap.PartsOrder
 (
 	OrderID INT IDENTITY NOT NULL,
@@ -106,50 +100,124 @@ CREATE TABLE Cheap.PartsOrder
 	TimeOfOrder DATETIME NOT NULL
 );
 
+--DROP TABLE Cheap.PartsJunction
 CREATE TABLE Cheap.PartsJunction
 (
 	Id INT IDENTITY NOT NULL,
 	OrderId INT NOT NULL,
-	Name VARCHAR(128) NOT NULL
+	Name NVARCHAR(128) NOT NULL
 );
 
 
 
-ALTER TABLE PizzaStore.Inventory
-ADD CONSTRAINT FK_Inventory_InventoryID FOREIGN KEY (InventoryID) REFERENCES PizzaStore.Locations(StoreNumber)
+ALTER TABLE Cheap.Customers
+ADD CONSTRAINT PK_Customers_CustomerID PRIMARY KEY (CustomerID);
+GO
+
+ALTER TABLE Cheap.Inventory
+ADD CONSTRAINT PK_Inventory_Name PRIMARY KEY (Name)
+GO
+
+ALTER TABLE Cheap.CPU
+ADD CONSTRAINT PK_CPU_CPUId PRIMARY KEY (CPUId)
+GO
+
+ALTER TABLE Cheap.PowerSupply
+ADD CONSTRAINT PK_PowerSupply_PowerSupplyId PRIMARY KEY (PowerSupplyId)
+GO
+
+ALTER TABLE Cheap.GraphicsCard
+ADD CONSTRAINT PK_GraphicsCard_GraphicsCardId PRIMARY KEY (GraphicsCardId)
+GO
+
+ALTER TABLE Cheap.HardDrive
+ADD CONSTRAINT PK_HardDrive_HardDriveId PRIMARY KEY (HardDriveId)
+GO
+
+ALTER TABLE Cheap.MotherBoard
+ADD CONSTRAINT PK_MotherBoard_MotherBoardId PRIMARY KEY (MotherBoardId)
+GO
+
+ALTER TABLE Cheap.RAM
+ADD CONSTRAINT PK_RAM_RAMId PRIMARY KEY (RAMId)
+GO
+
+ALTER TABLE Cheap.ComputerCase
+ADD CONSTRAINT PK_ComputerCase_ComputerCaseId PRIMARY KEY (ComputerCaseId)
+GO
+
+ALTER TABLE Cheap.PartsOrder
+ADD CONSTRAINT PK_PartsOrder_OrderID PRIMARY KEY (OrderID)
+GO
+
+ALTER TABLE Cheap.PartsJunction
+ADD CONSTRAINT PK_PartsJunction_Id PRIMARY KEY (Id)
 GO
 
 
-ALTER TABLE PizzaStore.Orders
-ADD CONSTRAINT FK_Order_StoreNumber FOREIGN KEY (StoreNumber) REFERENCES PizzaStore.Locations(StoreNumber)
-GO
-
-ALTER TABLE PizzaStore.Orders
-ADD CONSTRAINT FK_Orders_UserID FOREIGN KEY (UserID) REFERENCES PizzaStore.Users(ID)
-GO
-
-ALTER TABLE PizzaStore.PizzaPie
-ADD CONSTRAINT FK_PizzaPie_OrderID FOREIGN KEY (OrderID) REFERENCES PizzaStore.Orders(OrderID)
-GO
 
 
-ALTER TABLE PizzaStore.Users
-ADD CONSTRAINT FK_Users_PrefLocation FOREIGN KEY (PrefLocation) REFERENCES PizzaStore.Locations(StoreNumber)
+
+
+ALTER TABLE Cheap.PartsOrder
+ADD CONSTRAINT FK_PartsOrder_CustomerID FOREIGN KEY(CustomerID) REFERENCES Cheap.Customers(CustomerID)
 GO
 
-ALTER TABLE PizzaStore.Users
-ADD CONSTRAINT PK_Users_ID PRIMARY KEY (ID);
+ALTER TABLE Cheap.PartsJunction
+ADD CONSTRAINT FK_PartsJunction_OrderID FOREIGN KEY(OrderId) REFERENCES Cheap.PartsOrder(OrderID)
+
+ALTER TABLE Cheap.PartsJunction
+ADD CONSTRAINT FK_PartsJunction_Name FOREIGN KEY(Name) REFERENCES Cheap.Inventory(Name)
+
+ALTER TABLE Cheap.CPU
+ADD CONSTRAINT FK_CPU_Name FOREIGN KEY (Name) REFERENCES Cheap.Inventory(Name)
 GO
 
-ALTER TABLE PizzaStore.Orders
-ADD CONSTRAINT PK_Orders_OrderID PRIMARY KEY (OrderID)
+ALTER TABLE Cheap.PowerSupply
+ADD CONSTRAINT FK_PowerSupply_Name FOREIGN KEY (Name) REFERENCES Cheap.Inventory(Name)
 GO
 
-ALTER TABLE PizzaStore.PizzaPie
-ADD CONSTRAINT PK_PizzaPie_ID PRIMARY KEY (ID)
+ALTER TABLE Cheap.GraphicsCard
+ADD CONSTRAINT FK_GraphicsCard_Name FOREIGN KEY (Name) REFERENCES Cheap.Inventory(Name)
 GO
 
-ALTER TABLE PizzaStore.Locations
-ADD CONSTRAINT PK_Locations_StoreNumber PRIMARY KEY (StoreNumber)
+ALTER TABLE Cheap.HardDrive
+ADD CONSTRAINT FK_HardDrive_Name FOREIGN KEY (Name) REFERENCES Cheap.Inventory(Name)
 GO
+
+ALTER TABLE Cheap.MotherBoard
+ADD CONSTRAINT FK_MotherBoard_Name FOREIGN KEY (Name) REFERENCES Cheap.Inventory(Name)
+GO
+
+ALTER TABLE Cheap.RAM
+ADD CONSTRAINT FK_RAM_Name FOREIGN KEY (Name) REFERENCES Cheap.Inventory(Name)
+GO
+
+ALTER TABLE Cheap.ComputerCase
+ADD CONSTRAINT FK_ComputerCase_Name FOREIGN KEY (Name) REFERENCES Cheap.Inventory(Name)
+GO
+
+
+
+
+SELECT * FROM Cheap.Customers
+
+SELECT * FROM Cheap.CPU
+
+SELECT * FROM Cheap.RAM
+
+SELECT * FROM Cheap.PowerSupply
+
+SELECT * FROM Cheap.MotherBoard
+
+SELECT * FROM Cheap.ComputerCase
+
+SELECT * FROM Cheap.HardDrive
+
+SELECT * FROM Cheap.GraphicsCard
+
+SELECT * FROM Cheap.PartsOrder
+
+SELECT * FROM Cheap.PartsJunction
+
 
