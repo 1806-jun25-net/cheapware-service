@@ -6,5 +6,10 @@ namespace Cheapware.Library.Models
 {
     class PowerSupply
     {
+        public int PowerSupplyId { get; set; }
+        public string Name { get; set; }
+        public string Image { get; set; }
+        public string Wattage { get; set; }
+		public bool Modular { get; set; }
     }
 }

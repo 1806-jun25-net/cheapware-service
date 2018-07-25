@@ -6,5 +6,10 @@ namespace Cheapware.Library.Models
 {
     class RAM
     {
+        public int RAMId { get; set; }
+        public string Name { get; set; }
+        public string Image { get; set; }
+        public string Speed { get; set; }
+        public string Size { get; set; }
     }
 }

@@ -6,5 +6,9 @@ namespace Cheapware.Library.Models
 {
     class MotherBoard
     {
+        public int MotherBoardId { get; set; }
+        public string Name { get; set; }
+        public string Image { get; set; }
+        public string Form { get; set; }
     }
 }
