@@ -11,5 +11,6 @@ namespace Cheapware.Library.Models
         public string Image { get; set; }
         public string Wattage { get; set; }
 		public bool Modular { get; set; }
+        public decimal Price { get; set; }
     }
 }
