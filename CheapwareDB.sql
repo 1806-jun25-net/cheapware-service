@@ -34,9 +34,9 @@ CREATE TABLE Cheap.CPUs
 CREATE TABLE Cheap.PowerSupplys
 (
 	PowerSupplyId INT IDENTITY,
-	Name NVARCHAR(128),
-	Watage NVARCHAR(128),
-	Modular NVARCHAR(128),
+	Name NVARCHAR(128) NOT NULL,
+	Wattage NVARCHAR(128) NOT NULL,
+	Modular BIT NOT NULL,
 	Price MONEY NOT NULL,
 	Img NVARCHAR(128) NOT NULL
 );
@@ -86,6 +86,7 @@ CREATE TABLE Cheap.RAMs
 	Price MONEY NOT NULL,
 	Img NVARCHAR(128) NOT NULL
 );
+
 --DROP TABLE Cheap.ComputerCases
 CREATE TABLE Cheap.ComputerCases
 (

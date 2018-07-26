@@ -7,8 +7,8 @@ namespace Cheapware.Data.Models
     {
         public int PowerSupplyId { get; set; }
         public string Name { get; set; }
-        public string Watage { get; set; }
-        public string Modular { get; set; }
+        public string Wattage { get; set; }
+        public bool Modular { get; set; }
         public decimal Price { get; set; }
         public string Img { get; set; }
 

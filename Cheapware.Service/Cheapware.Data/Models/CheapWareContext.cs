@@ -277,17 +277,20 @@ namespace Cheapware.Data.Models
                     .IsRequired()
                     .HasMaxLength(128);
 
-                entity.Property(e => e.Modular).HasMaxLength(128);
-
-                entity.Property(e => e.Name).HasMaxLength(128);
+                entity.Property(e => e.Name)
+                    .IsRequired()
+                    .HasMaxLength(128);
 
                 entity.Property(e => e.Price).HasColumnType("money");
 
-                entity.Property(e => e.Watage).HasMaxLength(128);
+                entity.Property(e => e.Wattage)
+                    .IsRequired()
+                    .HasMaxLength(128);
 
                 entity.HasOne(d => d.NameNavigation)
                     .WithMany(p => p.PowerSupplys)
                     .HasForeignKey(d => d.Name)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_PowerSupplys_Name");
             });
 

@@ -10,6 +10,10 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using Microsoft.AspNetCore.Authentication;
+using Cheapware.Data.Models;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace Cheapware.API
 {
@@ -25,6 +29,12 @@ namespace Cheapware.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<CheapWareContext>(options =>
+                options.UseSqlServer(Configuration.GetConnectionString("CheapwareDB")));
+
+            services.AddDbContext<IdentityDbContext>(options =>
+                options.UseSqlServer(Configuration.GetConnectionString("AuthDB"),
+                    b => b.MigrationsAssembly("CheapWare.API"))); // for "TodoApi2", put your data project.
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 

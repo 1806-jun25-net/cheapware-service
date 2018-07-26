@@ -13,4 +13,8 @@
     <PackageReference Include="Microsoft.AspNetCore.App" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Cheapware.Data\Cheapware.Data.csproj" />
+  </ItemGroup>
+
 </Project>
