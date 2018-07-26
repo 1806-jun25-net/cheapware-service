@@ -15,6 +15,8 @@ using Cheapware.Data.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Swashbuckle.AspNetCore.Swagger;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Identity;
 
 namespace Cheapware.API
 {
@@ -35,10 +37,50 @@ namespace Cheapware.API
 
             services.AddDbContext<IdentityDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("AuthDB"),
-                    b => b.MigrationsAssembly("CheapWare.API"))); // for "TodoApi2", put your data project.
+                    b => b.MigrationsAssembly("CheapWare.API")));
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
+            services.AddIdentity<IdentityUser, IdentityRole>(options =>
+            {
+                // Password settings (defaults - optional)
+                options.Password.RequireDigit = true;
+                options.Password.RequiredLength = 6;
+                options.Password.RequiredUniqueChars = 0;
+                options.Password.RequireLowercase = true;
+                options.Password.RequireNonAlphanumeric = true;
+                options.Password.RequireUppercase = false;
 
+                options.User.AllowedUserNameCharacters =
+                    "abcdefghijklmnopqrstuvwxyz" +
+                    "ABCDEFGHIJKLMNOPQRSTUVWXYZ" +
+                    "0123456789" +
+                    "-._@+";
+            })
+                .AddEntityFrameworkStores<IdentityDbContext>();
+
+            services.ConfigureApplicationCookie(options =>
+            {
+                options.ExpireTimeSpan = TimeSpan.FromMinutes(10);
+                options.Events = new CookieAuthenticationEvents
+                {
+                    OnRedirectToLogin = ctx =>
+                    {
+                        ctx.Response.StatusCode = 401; // Unauthorized
+                        return Task.FromResult(0);
+                    },
+                    OnRedirectToAccessDenied = ctx =>
+                    {
+                        ctx.Response.StatusCode = 403;
+                        return Task.FromResult(0);
+                    }
+                };
+            });
+
+            services.AddAuthentication();
+
+            services.AddMvc()
+                .AddXmlSerializerFormatters()
+                .SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
 
             services.AddSwaggerGen(c =>
