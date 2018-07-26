@@ -6,7 +6,7 @@ using Cheapware.Data.Models;
 
 namespace Cheapware.Library.RepoClasses
 {
-    class CustomersRepo
+    public class CustomersRepo
     {
         private readonly CheapWareContext db;
 

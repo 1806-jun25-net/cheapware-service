@@ -6,11 +6,11 @@ using Cheapware.Library.Models;
 
 namespace Cheapware.Library.RepoClasses
 {
-    public class ComputerCaseRepo
+    public class ComputerCasesRepo
     {
         private readonly CheapWareContext db;
 
-        public ComputerCaseRepo(CheapWareContext _db)
+        public ComputerCasesRepo(CheapWareContext _db)
         {
             db = _db;
         }
