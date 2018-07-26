@@ -5,7 +5,11 @@ VisualStudioVersion = 15.0.27703.2042
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cheapware.Library", "Cheapware.Library\Cheapware.Library.csproj", "{215CFA57-FD0C-45D3-8193-9C8D465111E3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cheapware.Data", "Cheapware.Data\Cheapware.Data.csproj", "{1EEE89FB-64B6-4696-B31B-1D49AC45C09D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cheapware.Data", "Cheapware.Data\Cheapware.Data.csproj", "{1EEE89FB-64B6-4696-B31B-1D49AC45C09D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cheapware.Service.Test", "Cheapware.Service.Test\Cheapware.Service.Test.csproj", "{3E4FC218-C836-4331-913A-B10329A9356C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cheapware.API", "Cheapware.API\Cheapware.API.csproj", "{1C14CAF5-8163-4631-B62D-AAAA7169718F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +25,14 @@ Global
 		{1EEE89FB-64B6-4696-B31B-1D49AC45C09D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1EEE89FB-64B6-4696-B31B-1D49AC45C09D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1EEE89FB-64B6-4696-B31B-1D49AC45C09D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3E4FC218-C836-4331-913A-B10329A9356C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3E4FC218-C836-4331-913A-B10329A9356C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3E4FC218-C836-4331-913A-B10329A9356C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3E4FC218-C836-4331-913A-B10329A9356C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1C14CAF5-8163-4631-B62D-AAAA7169718F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1C14CAF5-8163-4631-B62D-AAAA7169718F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1C14CAF5-8163-4631-B62D-AAAA7169718F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1C14CAF5-8163-4631-B62D-AAAA7169718F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
