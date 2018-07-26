@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cheapware.Data", "Cheapware
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cheapware.Service.Test", "Cheapware.Service.Test\Cheapware.Service.Test.csproj", "{3E4FC218-C836-4331-913A-B10329A9356C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cheapware.API", "Cheapware.API\Cheapware.API.csproj", "{1C14CAF5-8163-4631-B62D-AAAA7169718F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CheapWare.API", "Cheapware.API\CheapWare.API.csproj", "{1C14CAF5-8163-4631-B62D-AAAA7169718F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
