@@ -9,7 +9,8 @@ CREATE TABLE Cheap.Customers
 	Address NVARCHAR(128) NOT NULL,
 );
 
-CREATE TABLE Cheap.Inventory
+--DROP TABLE Cheap.Inventorys
+CREATE TABLE Cheap.Inventorys
 (
 	Name NVARCHAR(128) NOT NULL,
 	Quantity INT NOT NULL,
@@ -18,7 +19,8 @@ CREATE TABLE Cheap.Inventory
 	Img NVARCHAR(128) NOT NULL
 );
 
-CREATE TABLE Cheap.CPU
+--DROP TABLE Cheap.CPUs
+CREATE TABLE Cheap.CPUs
 (
 	CPUId INT IDENTITY NOT NULL,
 	Name NVARCHAR(128) NOT NULL,
@@ -28,8 +30,8 @@ CREATE TABLE Cheap.CPU
 	Img NVARCHAR(128) NOT NULL
 );
 
---DROP TABLE Cheap.PowerSupply
-CREATE TABLE Cheap.PowerSupply
+--DROP TABLE Cheap.PowerSupplys
+CREATE TABLE Cheap.PowerSupplys
 (
 	PowerSupplyId INT IDENTITY,
 	Name NVARCHAR(128),
@@ -39,7 +41,8 @@ CREATE TABLE Cheap.PowerSupply
 	Img NVARCHAR(128) NOT NULL
 );
 
-CREATE TABLE Cheap.GraphicsCard
+--DROP TABLE Cheap.GraphicsCards
+CREATE TABLE Cheap.GraphicsCards
 (
 	GraphicsCardId INT IDENTITY NOT NULL,
 	Name NVARCHAR(128) NOT NULL,
@@ -49,8 +52,8 @@ CREATE TABLE Cheap.GraphicsCard
 	Img NVARCHAR(128) NOT NULL
 );
 
---DROP TABLE Cheap.HardDrive
-CREATE TABLE Cheap.HardDrive
+--DROP TABLE Cheap.HardDrives
+CREATE TABLE Cheap.HardDrives
 (
 	HardDriveId INT IDENTITY NOT NULL,
 	Name NVARCHAR(128) NOT NULL,
@@ -61,7 +64,8 @@ CREATE TABLE Cheap.HardDrive
 	Img NVARCHAR(128) NOT NULL
 )
 
-CREATE TABLE Cheap.MotherBoard
+--DROP TABLE Cheap.MotherBoards
+CREATE TABLE Cheap.MotherBoards
 (
 	MotherBoardId INT IDENTITY NOT NULL,
 	Name NVARCHAR(128) NOT NULL,
@@ -72,7 +76,8 @@ CREATE TABLE Cheap.MotherBoard
 	Img NVARCHAR(128) NOT NULL
 )
 
-CREATE TABLE Cheap.RAM
+--DROP TABLE Cheap.RAMs
+CREATE TABLE Cheap.RAMs
 (
 	RAMId INT IDENTITY NOT NULL,
 	Name NVARCHAR(128) NOT NULL,
@@ -81,8 +86,8 @@ CREATE TABLE Cheap.RAM
 	Price MONEY NOT NULL,
 	Img NVARCHAR(128) NOT NULL
 );
-
-CREATE TABLE Cheap.ComputerCase
+--DROP TABLE Cheap.ComputerCases
+CREATE TABLE Cheap.ComputerCases
 (
 	ComputerCaseId INT IDENTITY NOT NULL,
 	Name NVARCHAR(128) NOT NULL,
@@ -91,8 +96,8 @@ CREATE TABLE Cheap.ComputerCase
 	Img NVARCHAR(128) NOT NULL
 )
 
---DROP TABLE 
-CREATE TABLE Cheap.PartsOrder
+--DROP TABLE Cheap.PartsOrders
+CREATE TABLE Cheap.PartsOrders
 (
 	OrderID INT IDENTITY NOT NULL,
 	CustomerID INT NOT NULL,	
@@ -100,8 +105,8 @@ CREATE TABLE Cheap.PartsOrder
 	TimeOfOrder DATETIME NOT NULL
 );
 
---DROP TABLE Cheap.PartsJunction
-CREATE TABLE Cheap.PartsJunction
+--DROP TABLE Cheap.PartsJunctions
+CREATE TABLE Cheap.PartsJunctions
 (
 	Id INT IDENTITY NOT NULL,
 	OrderId INT NOT NULL,
@@ -114,44 +119,44 @@ ALTER TABLE Cheap.Customers
 ADD CONSTRAINT PK_Customers_CustomerID PRIMARY KEY (CustomerID);
 GO
 
-ALTER TABLE Cheap.Inventory
-ADD CONSTRAINT PK_Inventory_Name PRIMARY KEY (Name)
+ALTER TABLE Cheap.Inventorys
+ADD CONSTRAINT PK_Inventorys_Name PRIMARY KEY (Name)
 GO
 
-ALTER TABLE Cheap.CPU
-ADD CONSTRAINT PK_CPU_CPUId PRIMARY KEY (CPUId)
+ALTER TABLE Cheap.CPUs
+ADD CONSTRAINT PK_CPUs_CPUId PRIMARY KEY (CPUId)
 GO
 
-ALTER TABLE Cheap.PowerSupply
-ADD CONSTRAINT PK_PowerSupply_PowerSupplyId PRIMARY KEY (PowerSupplyId)
+ALTER TABLE Cheap.PowerSupplys
+ADD CONSTRAINT PK_PowerSupplys_PowerSupplyId PRIMARY KEY (PowerSupplyId)
 GO
 
-ALTER TABLE Cheap.GraphicsCard
-ADD CONSTRAINT PK_GraphicsCard_GraphicsCardId PRIMARY KEY (GraphicsCardId)
+ALTER TABLE Cheap.GraphicsCards
+ADD CONSTRAINT PK_GraphicsCards_GraphicsCardId PRIMARY KEY (GraphicsCardId)
 GO
 
-ALTER TABLE Cheap.HardDrive
-ADD CONSTRAINT PK_HardDrive_HardDriveId PRIMARY KEY (HardDriveId)
+ALTER TABLE Cheap.HardDrives
+ADD CONSTRAINT PK_HardDrives_HardDriveId PRIMARY KEY (HardDriveId)
 GO
 
-ALTER TABLE Cheap.MotherBoard
-ADD CONSTRAINT PK_MotherBoard_MotherBoardId PRIMARY KEY (MotherBoardId)
+ALTER TABLE Cheap.MotherBoards
+ADD CONSTRAINT PK_MotherBoards_MotherBoardId PRIMARY KEY (MotherBoardId)
 GO
 
-ALTER TABLE Cheap.RAM
-ADD CONSTRAINT PK_RAM_RAMId PRIMARY KEY (RAMId)
+ALTER TABLE Cheap.RAMs
+ADD CONSTRAINT PK_RAMs_RAMId PRIMARY KEY (RAMId)
 GO
 
-ALTER TABLE Cheap.ComputerCase
-ADD CONSTRAINT PK_ComputerCase_ComputerCaseId PRIMARY KEY (ComputerCaseId)
+ALTER TABLE Cheap.ComputerCases
+ADD CONSTRAINT PK_ComputerCases_ComputerCaseId PRIMARY KEY (ComputerCaseId)
 GO
 
-ALTER TABLE Cheap.PartsOrder
-ADD CONSTRAINT PK_PartsOrder_OrderID PRIMARY KEY (OrderID)
+ALTER TABLE Cheap.PartsOrders
+ADD CONSTRAINT PK_PartsOrders_OrderID PRIMARY KEY (OrderID)
 GO
 
-ALTER TABLE Cheap.PartsJunction
-ADD CONSTRAINT PK_PartsJunction_Id PRIMARY KEY (Id)
+ALTER TABLE Cheap.PartsJunctions
+ADD CONSTRAINT PK_PartsJunctions_Id PRIMARY KEY (Id)
 GO
 
 
@@ -159,42 +164,42 @@ GO
 
 
 
-ALTER TABLE Cheap.PartsOrder
-ADD CONSTRAINT FK_PartsOrder_CustomerID FOREIGN KEY(CustomerID) REFERENCES Cheap.Customers(CustomerID)
+ALTER TABLE Cheap.PartsOrders
+ADD CONSTRAINT FK_PartsOrders_CustomerID FOREIGN KEY(CustomerID) REFERENCES Cheap.Customers(CustomerID)
 GO
 
-ALTER TABLE Cheap.PartsJunction
-ADD CONSTRAINT FK_PartsJunction_OrderID FOREIGN KEY(OrderId) REFERENCES Cheap.PartsOrder(OrderID)
+ALTER TABLE Cheap.PartsJunctions
+ADD CONSTRAINT FK_PartsJunctions_OrderID FOREIGN KEY(OrderId) REFERENCES Cheap.PartsOrders(OrderID)
 
-ALTER TABLE Cheap.PartsJunction
-ADD CONSTRAINT FK_PartsJunction_Name FOREIGN KEY(Name) REFERENCES Cheap.Inventory(Name)
+ALTER TABLE Cheap.PartsJunctions
+ADD CONSTRAINT FK_PartsJunctions_Name FOREIGN KEY(Name) REFERENCES Cheap.Inventorys(Name)
 
-ALTER TABLE Cheap.CPU
-ADD CONSTRAINT FK_CPU_Name FOREIGN KEY (Name) REFERENCES Cheap.Inventory(Name)
+ALTER TABLE Cheap.CPUs
+ADD CONSTRAINT FK_CPUs_Name FOREIGN KEY (Name) REFERENCES Cheap.Inventorys(Name)
 GO
 
-ALTER TABLE Cheap.PowerSupply
-ADD CONSTRAINT FK_PowerSupply_Name FOREIGN KEY (Name) REFERENCES Cheap.Inventory(Name)
+ALTER TABLE Cheap.PowerSupplys
+ADD CONSTRAINT FK_PowerSupplys_Name FOREIGN KEY (Name) REFERENCES Cheap.Inventorys(Name)
 GO
 
-ALTER TABLE Cheap.GraphicsCard
-ADD CONSTRAINT FK_GraphicsCard_Name FOREIGN KEY (Name) REFERENCES Cheap.Inventory(Name)
+ALTER TABLE Cheap.GraphicsCards
+ADD CONSTRAINT FK_GraphicsCards_Name FOREIGN KEY (Name) REFERENCES Cheap.Inventorys(Name)
 GO
 
-ALTER TABLE Cheap.HardDrive
-ADD CONSTRAINT FK_HardDrive_Name FOREIGN KEY (Name) REFERENCES Cheap.Inventory(Name)
+ALTER TABLE Cheap.HardDrives
+ADD CONSTRAINT FK_HardDrives_Name FOREIGN KEY (Name) REFERENCES Cheap.Inventorys(Name)
 GO
 
-ALTER TABLE Cheap.MotherBoard
-ADD CONSTRAINT FK_MotherBoard_Name FOREIGN KEY (Name) REFERENCES Cheap.Inventory(Name)
+ALTER TABLE Cheap.MotherBoards
+ADD CONSTRAINT FK_MotherBoards_Name FOREIGN KEY (Name) REFERENCES Cheap.Inventorys(Name)
 GO
 
-ALTER TABLE Cheap.RAM
-ADD CONSTRAINT FK_RAM_Name FOREIGN KEY (Name) REFERENCES Cheap.Inventory(Name)
+ALTER TABLE Cheap.RAMs
+ADD CONSTRAINT FK_RAMs_Name FOREIGN KEY (Name) REFERENCES Cheap.Inventorys(Name)
 GO
 
-ALTER TABLE Cheap.ComputerCase
-ADD CONSTRAINT FK_ComputerCase_Name FOREIGN KEY (Name) REFERENCES Cheap.Inventory(Name)
+ALTER TABLE Cheap.ComputerCases
+ADD CONSTRAINT FK_ComputerCases_Name FOREIGN KEY (Name) REFERENCES Cheap.Inventorys(Name)
 GO
 
 
@@ -202,22 +207,22 @@ GO
 
 SELECT * FROM Cheap.Customers
 
-SELECT * FROM Cheap.CPU
+SELECT * FROM Cheap.CPUs
 
-SELECT * FROM Cheap.RAM
+SELECT * FROM Cheap.RAMs
 
-SELECT * FROM Cheap.PowerSupply
+SELECT * FROM Cheap.PowerSupplys
 
-SELECT * FROM Cheap.MotherBoard
+SELECT * FROM Cheap.MotherBoards
 
-SELECT * FROM Cheap.ComputerCase
+SELECT * FROM Cheap.ComputerCases
 
-SELECT * FROM Cheap.HardDrive
+SELECT * FROM Cheap.HardDrives
 
-SELECT * FROM Cheap.GraphicsCard
+SELECT * FROM Cheap.GraphicsCards
 
-SELECT * FROM Cheap.PartsOrder
+SELECT * FROM Cheap.PartsOrders
 
-SELECT * FROM Cheap.PartsJunction
+SELECT * FROM Cheap.PartsJunctions
 
 

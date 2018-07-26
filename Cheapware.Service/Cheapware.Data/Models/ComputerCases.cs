@@ -3,15 +3,14 @@ using System.Collections.Generic;
 
 namespace Cheapware.Data.Models
 {
-    public partial class GraphicsCard
+    public partial class ComputerCases
     {
-        public int GraphicsCardId { get; set; }
+        public int ComputerCaseId { get; set; }
         public string Name { get; set; }
-        public string Speed { get; set; }
         public string Size { get; set; }
         public decimal Price { get; set; }
         public string Img { get; set; }
 
-        public Inventory NameNavigation { get; set; }
+        public Inventorys NameNavigation { get; set; }
     }
 }

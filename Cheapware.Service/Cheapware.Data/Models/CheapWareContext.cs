@@ -15,17 +15,17 @@ namespace Cheapware.Data.Models
         {
         }
 
-        public virtual DbSet<ComputerCase> ComputerCase { get; set; }
-        public virtual DbSet<Cpu> Cpu { get; set; }
+        public virtual DbSet<ComputerCases> ComputerCases { get; set; }
+        public virtual DbSet<Cpus> Cpus { get; set; }
         public virtual DbSet<Customers> Customers { get; set; }
-        public virtual DbSet<GraphicsCard> GraphicsCard { get; set; }
-        public virtual DbSet<HardDrive> HardDrive { get; set; }
-        public virtual DbSet<Inventory> Inventory { get; set; }
-        public virtual DbSet<MotherBoard> MotherBoard { get; set; }
-        public virtual DbSet<PartsJunction> PartsJunction { get; set; }
-        public virtual DbSet<PartsOrder> PartsOrder { get; set; }
-        public virtual DbSet<PowerSupply> PowerSupply { get; set; }
-        public virtual DbSet<Ram> Ram { get; set; }
+        public virtual DbSet<GraphicsCards> GraphicsCards { get; set; }
+        public virtual DbSet<HardDrives> HardDrives { get; set; }
+        public virtual DbSet<Inventorys> Inventorys { get; set; }
+        public virtual DbSet<MotherBoards> MotherBoards { get; set; }
+        public virtual DbSet<PartsJunctions> PartsJunctions { get; set; }
+        public virtual DbSet<PartsOrders> PartsOrders { get; set; }
+        public virtual DbSet<PowerSupplys> PowerSupplys { get; set; }
+        public virtual DbSet<Rams> Rams { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -36,9 +36,11 @@ namespace Cheapware.Data.Models
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<ComputerCase>(entity =>
+            modelBuilder.Entity<ComputerCases>(entity =>
             {
-                entity.ToTable("ComputerCase", "Cheap");
+                entity.HasKey(e => e.ComputerCaseId);
+
+                entity.ToTable("ComputerCases", "Cheap");
 
                 entity.Property(e => e.Img)
                     .IsRequired()
@@ -55,15 +57,17 @@ namespace Cheapware.Data.Models
                     .HasMaxLength(128);
 
                 entity.HasOne(d => d.NameNavigation)
-                    .WithMany(p => p.ComputerCase)
+                    .WithMany(p => p.ComputerCases)
                     .HasForeignKey(d => d.Name)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_ComputerCase_Name");
+                    .HasConstraintName("FK_ComputerCases_Name");
             });
 
-            modelBuilder.Entity<Cpu>(entity =>
+            modelBuilder.Entity<Cpus>(entity =>
             {
-                entity.ToTable("CPU", "Cheap");
+                entity.HasKey(e => e.Cpuid);
+
+                entity.ToTable("CPUs", "Cheap");
 
                 entity.Property(e => e.Cpuid).HasColumnName("CPUId");
 
@@ -82,10 +86,10 @@ namespace Cheapware.Data.Models
                     .HasMaxLength(128);
 
                 entity.HasOne(d => d.NameNavigation)
-                    .WithMany(p => p.Cpu)
+                    .WithMany(p => p.Cpus)
                     .HasForeignKey(d => d.Name)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_CPU_Name");
+                    .HasConstraintName("FK_CPUs_Name");
             });
 
             modelBuilder.Entity<Customers>(entity =>
@@ -105,9 +109,11 @@ namespace Cheapware.Data.Models
                     .HasMaxLength(128);
             });
 
-            modelBuilder.Entity<GraphicsCard>(entity =>
+            modelBuilder.Entity<GraphicsCards>(entity =>
             {
-                entity.ToTable("GraphicsCard", "Cheap");
+                entity.HasKey(e => e.GraphicsCardId);
+
+                entity.ToTable("GraphicsCards", "Cheap");
 
                 entity.Property(e => e.Img)
                     .IsRequired()
@@ -128,15 +134,17 @@ namespace Cheapware.Data.Models
                     .HasMaxLength(128);
 
                 entity.HasOne(d => d.NameNavigation)
-                    .WithMany(p => p.GraphicsCard)
+                    .WithMany(p => p.GraphicsCards)
                     .HasForeignKey(d => d.Name)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_GraphicsCard_Name");
+                    .HasConstraintName("FK_GraphicsCards_Name");
             });
 
-            modelBuilder.Entity<HardDrive>(entity =>
+            modelBuilder.Entity<HardDrives>(entity =>
             {
-                entity.ToTable("HardDrive", "Cheap");
+                entity.HasKey(e => e.HardDriveId);
+
+                entity.ToTable("HardDrives", "Cheap");
 
                 entity.Property(e => e.Category)
                     .IsRequired()
@@ -161,17 +169,17 @@ namespace Cheapware.Data.Models
                     .HasMaxLength(128);
 
                 entity.HasOne(d => d.NameNavigation)
-                    .WithMany(p => p.HardDrive)
+                    .WithMany(p => p.HardDrives)
                     .HasForeignKey(d => d.Name)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_HardDrive_Name");
+                    .HasConstraintName("FK_HardDrives_Name");
             });
 
-            modelBuilder.Entity<Inventory>(entity =>
+            modelBuilder.Entity<Inventorys>(entity =>
             {
                 entity.HasKey(e => e.Name);
 
-                entity.ToTable("Inventory", "Cheap");
+                entity.ToTable("Inventorys", "Cheap");
 
                 entity.Property(e => e.Name)
                     .HasMaxLength(128)
@@ -186,9 +194,11 @@ namespace Cheapware.Data.Models
                 entity.Property(e => e.Price).HasColumnType("money");
             });
 
-            modelBuilder.Entity<MotherBoard>(entity =>
+            modelBuilder.Entity<MotherBoards>(entity =>
             {
-                entity.ToTable("MotherBoard", "Cheap");
+                entity.HasKey(e => e.MotherBoardId);
+
+                entity.ToTable("MotherBoards", "Cheap");
 
                 entity.Property(e => e.FormFactor)
                     .IsRequired()
@@ -209,38 +219,38 @@ namespace Cheapware.Data.Models
                 entity.Property(e => e.Ramslots).HasColumnName("RAMSlots");
 
                 entity.HasOne(d => d.NameNavigation)
-                    .WithMany(p => p.MotherBoard)
+                    .WithMany(p => p.MotherBoards)
                     .HasForeignKey(d => d.Name)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_MotherBoard_Name");
+                    .HasConstraintName("FK_MotherBoards_Name");
             });
 
-            modelBuilder.Entity<PartsJunction>(entity =>
+            modelBuilder.Entity<PartsJunctions>(entity =>
             {
-                entity.ToTable("PartsJunction", "Cheap");
+                entity.ToTable("PartsJunctions", "Cheap");
 
                 entity.Property(e => e.Name)
                     .IsRequired()
                     .HasMaxLength(128);
 
                 entity.HasOne(d => d.NameNavigation)
-                    .WithMany(p => p.PartsJunction)
+                    .WithMany(p => p.PartsJunctions)
                     .HasForeignKey(d => d.Name)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_PartsJunction_Name");
+                    .HasConstraintName("FK_PartsJunctions_Name");
 
                 entity.HasOne(d => d.Order)
-                    .WithMany(p => p.PartsJunction)
+                    .WithMany(p => p.PartsJunctions)
                     .HasForeignKey(d => d.OrderId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_PartsJunction_OrderID");
+                    .HasConstraintName("FK_PartsJunctions_OrderID");
             });
 
-            modelBuilder.Entity<PartsOrder>(entity =>
+            modelBuilder.Entity<PartsOrders>(entity =>
             {
                 entity.HasKey(e => e.OrderId);
 
-                entity.ToTable("PartsOrder", "Cheap");
+                entity.ToTable("PartsOrders", "Cheap");
 
                 entity.Property(e => e.OrderId).HasColumnName("OrderID");
 
@@ -251,15 +261,17 @@ namespace Cheapware.Data.Models
                 entity.Property(e => e.TimeOfOrder).HasColumnType("datetime");
 
                 entity.HasOne(d => d.Customer)
-                    .WithMany(p => p.PartsOrder)
+                    .WithMany(p => p.PartsOrders)
                     .HasForeignKey(d => d.CustomerId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_PartsOrder_CustomerID");
+                    .HasConstraintName("FK_PartsOrders_CustomerID");
             });
 
-            modelBuilder.Entity<PowerSupply>(entity =>
+            modelBuilder.Entity<PowerSupplys>(entity =>
             {
-                entity.ToTable("PowerSupply", "Cheap");
+                entity.HasKey(e => e.PowerSupplyId);
+
+                entity.ToTable("PowerSupplys", "Cheap");
 
                 entity.Property(e => e.Img)
                     .IsRequired()
@@ -274,14 +286,16 @@ namespace Cheapware.Data.Models
                 entity.Property(e => e.Watage).HasMaxLength(128);
 
                 entity.HasOne(d => d.NameNavigation)
-                    .WithMany(p => p.PowerSupply)
+                    .WithMany(p => p.PowerSupplys)
                     .HasForeignKey(d => d.Name)
-                    .HasConstraintName("FK_PowerSupply_Name");
+                    .HasConstraintName("FK_PowerSupplys_Name");
             });
 
-            modelBuilder.Entity<Ram>(entity =>
+            modelBuilder.Entity<Rams>(entity =>
             {
-                entity.ToTable("RAM", "Cheap");
+                entity.HasKey(e => e.Ramid);
+
+                entity.ToTable("RAMs", "Cheap");
 
                 entity.Property(e => e.Ramid).HasColumnName("RAMId");
 
@@ -304,10 +318,10 @@ namespace Cheapware.Data.Models
                     .HasMaxLength(128);
 
                 entity.HasOne(d => d.NameNavigation)
-                    .WithMany(p => p.Ram)
+                    .WithMany(p => p.Rams)
                     .HasForeignKey(d => d.Name)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_RAM_Name");
+                    .HasConstraintName("FK_RAMs_Name");
             });
         }
     }
