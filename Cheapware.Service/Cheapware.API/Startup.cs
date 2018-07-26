@@ -14,6 +14,7 @@ using Microsoft.AspNetCore.Authentication;
 using Cheapware.Data.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Swashbuckle.AspNetCore.Swagger;
 
 namespace Cheapware.API
 {
@@ -36,6 +37,14 @@ namespace Cheapware.API
                 options.UseSqlServer(Configuration.GetConnectionString("AuthDB"),
                     b => b.MigrationsAssembly("CheapWare.API"))); // for "TodoApi2", put your data project.
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+
+
+
+
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new Info { Title = "Cheapware API", Version = "v1" });
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -45,12 +54,16 @@ namespace Cheapware.API
             {
                 app.UseDeveloperExceptionPage();
             }
-            else
-            {
-                app.UseHsts();
-            }
 
-            app.UseHttpsRedirection();
+            app.UseAuthentication();
+
+            app.UseSwagger();
+
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
+            });
+
             app.UseMvc();
         }
     }
