@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Cheapware.Library.Models
 {
-    class GraphicsCard
+    public class GraphicsCard
     {
 		public int GraphicsCardId { get; set; }
 		public string Name { get; set; }

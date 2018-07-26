@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Cheapware.Library.Models
 {
-    class PartsOrder
+    public class PartsOrder
     {
 		public int OrderId { get; set; }
 		public int CustomerId { get; set; }

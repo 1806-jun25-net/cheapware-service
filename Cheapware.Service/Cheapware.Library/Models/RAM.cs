@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Cheapware.Library.Models
 {
-    class RAM
+    public class RAM
     {
         public int RAMId { get; set; }
         public string Name { get; set; }

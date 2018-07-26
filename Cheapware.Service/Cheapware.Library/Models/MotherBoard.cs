@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Cheapware.Library.Models
 {
-    class MotherBoard
+    public class MotherBoard
     {
         public int MotherBoardId { get; set; }
         public string Name { get; set; }

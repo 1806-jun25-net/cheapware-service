@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Cheapware.Library.Models
 {
-    class PowerSupply
+    public class PowerSupply
     {
         public int PowerSupplyId { get; set; }
         public string Name { get; set; }

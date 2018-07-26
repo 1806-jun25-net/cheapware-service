@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Cheapware.Library.Models
 {
-    class ComputerCase
+    public class ComputerCase
     {
 		public int ComputerCaseId { get; set; }
 		public string Name { get; set; }
