@@ -8,6 +8,7 @@ namespace Cheapware.Library.Models
     {
 		public int OrderId { get; set; }
 		public int CustomerId { get; set; }
+        public DateTime TimeOfOrder { get; set; }
 		public decimal FinalPrice { get; set; }
     }
 
