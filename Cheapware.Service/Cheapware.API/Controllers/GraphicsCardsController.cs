@@ -7,20 +7,20 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace CheapWare.API.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/GraphicsCards")]
     [ApiController]
     public class GraphicsCardsController : ControllerBase
     {
         // GET: api/GraphicsCards
         [HttpGet]
-        public IEnumerable<string> Get()
+        public ActionResult<IEnumerable<string>> GetGraphicsCards()
         {
             return new string[] { "value1", "value2" };
         }
 
         // GET: api/GraphicsCards/5
-        [HttpGet("{id}", Name = "Get")]
-        public string Get(int id)
+        [HttpGet("{id}", Name = "GetGraphicsCardsById")]
+        public ActionResult<string> GetGraphicsCardsById(int id)
         {
             return "value";
         }

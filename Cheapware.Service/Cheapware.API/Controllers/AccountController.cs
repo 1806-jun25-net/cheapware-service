@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace CheapWare.API.Controllers
 {
-    [Route("api/[controller]/[action]")]
+    [Route("api/Account/[action]")]
     [ApiController]
     public class AccountController : ControllerBase
     {

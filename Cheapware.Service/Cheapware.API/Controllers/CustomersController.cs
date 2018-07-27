@@ -4,25 +4,28 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Cheapware.Library.RepoClasses;
+using Cheapware.Library.Models;
 
 namespace CheapWare.API.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/Customers")]
     [ApiController]
     public class CustomersController : ControllerBase
     {
+        public CustomersRepo repo;
         // GET: api/Customers
         [HttpGet]
-        public IEnumerable<string> Get()
+        public ActionResult<IEnumerable<string>> GetCustomers()
         {
-            return new string[] { "value1", "value2" };
+            return new List<string> { "bob", "dole" };
         }
 
         // GET: api/Customers/5
-        [HttpGet("{id}", Name = "Get")]
-        public string Get(int id)
+        [HttpGet("{id}", Name = "GetCustomersById")]
+        public ActionResult<Customer> GetCustomersById(int id)
         {
-            return "value";
+            return repo.GetCustomerById(1); ;
         }
 
         // POST: api/Customers
