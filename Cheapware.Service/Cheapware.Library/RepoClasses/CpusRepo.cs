@@ -29,6 +29,10 @@ namespace Cheapware.Library.RepoClasses
             }
             return null;
         }
+        public void Save()
+        {
+            db.SaveChanges();
+        }
 
     }
 }

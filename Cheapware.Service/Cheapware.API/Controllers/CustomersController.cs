@@ -47,7 +47,7 @@ namespace CheapWare.API.Controllers
             };
 
             repo.AddCustomer(new_customer);
-            
+            repo.Save();
         }
 
         // PUT: api/Customers/5
