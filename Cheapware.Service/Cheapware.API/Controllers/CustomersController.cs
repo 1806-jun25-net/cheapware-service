@@ -13,7 +13,13 @@ namespace CheapWare.API.Controllers
     [ApiController]
     public class CustomersController : ControllerBase
     {
-        public CustomersRepo repo;
+        private CustomersRepo repo { get; }
+
+        public CustomersController(CustomersRepo _repo)
+        {
+            repo = _repo;
+        }
+
         // GET: api/Customers
         [HttpGet]
         public ActionResult<IEnumerable<string>> GetCustomers()

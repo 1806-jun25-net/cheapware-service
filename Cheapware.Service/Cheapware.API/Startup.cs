@@ -18,6 +18,7 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Swashbuckle.AspNetCore.Swagger;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Identity;
+using Cheapware.Library.RepoClasses;
 
 namespace Cheapware.API
 {
@@ -33,6 +34,13 @@ namespace Cheapware.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddScoped<CustomersRepo>();
+            services.AddScoped<CpusRepo>();
+            services.AddScoped<GraphicsCardsRepo>();
+            services.AddScoped<MotherBoardsRepo>();
+            services.AddScoped<RamsRepo>();
+            services.AddScoped<ComputerCasesRepo>();
+
             services.AddDbContext<CheapWareContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("CheapwareDB")));
 
