@@ -33,5 +33,15 @@ namespace Cheapware.Library.RepoClasses
             }
             return null;
         }
+        public Customer GetCustomerByName(string name)
+        {
+            var customers = db.Customers;
+            foreach (var customer in customers)
+            {
+                if (customer.CustomerName == name)
+                    return Mapper.Map(customer);
+            }
+            return null;
+        }
     }
 }
