@@ -11,13 +11,7 @@ namespace CheapWare.API.Controllers
     [ApiController]
     public class ComputerCasesController : ControllerBase
     {
-        // GET: api/ComputerCases
-        [HttpGet]
-        public IEnumerable<string> Get()
-        {
-            return new string[] { "value1", "value2" };
-        }
-
+        
         // GET: api/ComputerCases/5
         [HttpGet("{id}", Name = "Get")]
         public string Get(int id)
