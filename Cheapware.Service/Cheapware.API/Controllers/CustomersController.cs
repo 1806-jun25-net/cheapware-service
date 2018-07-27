@@ -22,9 +22,9 @@ namespace CheapWare.API.Controllers
 
         // GET: api/Customers
         [HttpGet]
-        public ActionResult<IEnumerable<string>> GetCustomers()
+        public ActionResult<IEnumerable<Customer>> GetCustomers()
         {
-            return new List<string> { "bob", "dole" };
+            return repo.GetCustomers();
         }
 
         // GET: api/Customers/5
@@ -40,6 +40,7 @@ namespace CheapWare.API.Controllers
         [HttpPost]
         public void Post([FromBody] string value)
         {
+
         }
 
         // PUT: api/Customers/5
