@@ -33,7 +33,7 @@ namespace CheapWare.API.Controllers
         {
             var customer = repo.GetCustomerById(1);
 
-            return new List<string> { customer.CustomerName }; ;
+            return new List<string> { customer.CustomerName }; 
         }
 
         // POST: api/Customers

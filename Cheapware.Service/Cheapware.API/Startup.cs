@@ -42,6 +42,7 @@ namespace Cheapware.API
             services.AddScoped<ComputerCasesRepo>();
             services.AddScoped<PowerSupplysRepo>();
             services.AddScoped<InventoryRepo>();
+
             services.AddDbContext<CheapWareContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("CheapwareDB")));
 
