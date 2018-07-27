@@ -39,7 +39,7 @@ namespace Cheapware.API
             services.AddScoped<GraphicsCardsRepo>();
             services.AddScoped<MotherBoardsRepo>();
             services.AddScoped<RamsRepo>();
-            services.AddScoped<ComputerCasesRepo>();
+            services.AddScoped<ComputerRepo>();
             services.AddScoped<PowerSupplysRepo>();
             services.AddScoped<InventoryRepo>();
 
