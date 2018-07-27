@@ -23,9 +23,11 @@ namespace CheapWare.API.Controllers
 
         // GET: api/Customers/5
         [HttpGet("{id}", Name = "GetCustomersById")]
-        public ActionResult<Customer> GetCustomersById(int id)
+        public ActionResult<IEnumerable<string>> GetCustomersById(int id)
         {
-            return repo.GetCustomerById(1); ;
+            var customer = repo.GetCustomerById(1);
+
+            return new List<string> { customer.CustomerName }; ;
         }
 
         // POST: api/Customers
