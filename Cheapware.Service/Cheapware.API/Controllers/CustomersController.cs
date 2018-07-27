@@ -13,9 +13,9 @@ namespace CheapWare.API.Controllers
     [ApiController]
     public class CustomersController : ControllerBase
     {
-        private CustomersRepo repo { get; }
+        private ComputerRepo repo { get; }
 
-        public CustomersController(CustomersRepo _repo)
+        public CustomersController(ComputerRepo _repo)
         {
             repo = _repo;
         }
@@ -33,7 +33,7 @@ namespace CheapWare.API.Controllers
         {
             var customer = repo.GetCustomerById(1);
 
-            return new List<string> { customer.CustomerName };
+            return new List<string> { customer.CustomerName, customer.Address};
         }
 
         // POST: api/Customers
