@@ -22,9 +22,9 @@ namespace CheapWare.API.Controllers
 
         // GET: api/Customers
         [HttpGet]
-        public ActionResult<IEnumerable<string>> GetCustomers()
+        public ActionResult<IEnumerable<Customer>> GetCustomers()
         {
-            return new List<string> { "bob", "dole" };
+            return repo.GetCustomers();
         }
 
         // GET: api/Customers/5
@@ -33,19 +33,28 @@ namespace CheapWare.API.Controllers
         {
             var customer = repo.GetCustomerById(1);
 
-            return new List<string> { customer.CustomerName }; 
+            return new List<string> { customer.CustomerName };
         }
 
         // POST: api/Customers
         [HttpPost]
-        public void Post([FromBody] string value)
+        public void Post([FromBody] Customer cust)
         {
+            Customer new_customer = new Customer()
+            {
+                Address = cust.Address,
+                CustomerName = cust.CustomerName
+            };
+
+            repo.AddCustomer(new_customer);
+            repo.Save();
         }
 
         // PUT: api/Customers/5
         [HttpPut("{id}")]
         public void Put(int id, [FromBody] string value)
         {
+
         }
 
         // DELETE: api/ApiWithActions/5
