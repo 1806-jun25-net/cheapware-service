@@ -4,18 +4,26 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-
+using Cheapware.Library.Models;
+using Cheapware.Data.Models;
+using Cheapware.Library.RepoClasses;
 namespace CheapWare.API.Controllers
 {
     [Route("api/CPUs")]
     [ApiController]
     public class CPUsController : ControllerBase
     {
+        private ComputerRepo repo { get; }
+
+        public CPUsController(ComputerRepo _repo)
+        {
+            repo = _repo;
+        }
         // GET api/values
         [HttpGet]
-        public ActionResult<IEnumerable<string>> GetCPUs()
+        public ActionResult<List<CPU>> GetAll()
         {
-            return new string[] { "CPUs", "value2" };
+            return repo.GetCpus();
         }
 
         // GET api/values/5

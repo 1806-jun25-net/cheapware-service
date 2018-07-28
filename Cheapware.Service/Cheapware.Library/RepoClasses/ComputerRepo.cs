@@ -6,7 +6,7 @@ using Cheapware.Library.Models;
 
 namespace Cheapware.Library.RepoClasses
 {
-    public class ComputerRepo
+    public class ComputerRepo : IComputerRepo
     {
         private readonly CheapWareContext db;
 
@@ -14,6 +14,7 @@ namespace Cheapware.Library.RepoClasses
         {
             db = _db;
         }
+
         
         public List<ComputerCase> GetComputerCases()
         {
