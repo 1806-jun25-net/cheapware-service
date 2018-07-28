@@ -100,6 +100,7 @@ namespace Cheapware.Library.Models
             Image = c.Img,
             Speed = c.Speed,
             Cores = c.Cores
+            Price = c.Price
 
         };
         public static data.Cpus Map(CPU c) => new data.Cpus
@@ -108,7 +109,8 @@ namespace Cheapware.Library.Models
             Name = c.Name,
             Img = c.Image,
             Speed = c.Speed,
-            Cores = c.Cores
+            Cores = c.Cores,
+            Price = c.Price
 
         };
 
