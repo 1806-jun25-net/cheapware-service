@@ -13,7 +13,7 @@ namespace CheapWare.API.Controllers
     [ApiController]
     public class CustomersController : ControllerBase
     {
-        private ComputerRepo repo { get; }
+        private ComputerRepo repo { get; }                                                                             
 
         public CustomersController(ComputerRepo _repo)
         {
