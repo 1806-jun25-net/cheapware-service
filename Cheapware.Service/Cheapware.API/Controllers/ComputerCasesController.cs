@@ -4,18 +4,21 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-
+using Cheapware.Library.RepoClasses;
+using Cheapware.Data.Models;
+using Cheapware.Library.Models;
 namespace CheapWare.API.Controllers
 {
     [Route("api/ComputerCases")]
     [ApiController]
     public class ComputerCasesController : ControllerBase
     {
+        private ComputerRepo repo { get; }
         // GET: api/ComputerCases
         [HttpGet]
-        public ActionResult<IEnumerable<string>> GetComputerCases()
+        public ActionResult<List<ComputerCase>> GetComputerCases()
         {
-            return new string[] { "value1", "value2" };
+            return repo.GetComputerCases();
         }
 
         // GET: api/ComputerCases/5

@@ -13,7 +13,7 @@ namespace Cheapware.Library.RepoClasses
         public ComputerRepo(CheapWareContext _db)
         {
             db = _db;
-        }
+        } 
 
         
         public List<ComputerCase> GetComputerCases()

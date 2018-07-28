@@ -28,10 +28,11 @@ namespace CheapWare.API.Controllers
         }
 
         // GET api/values/5
-        [HttpGet("{id}", Name = "GetCPUsById")]
-        public ActionResult<string> GetCPUsById(int id)
+        [HttpGet("{name}", Name = "GetCPUsByName")]
+        public ActionResult<CPU> GetCPUsByName(string name)
         {
-            return "value";
+
+            return repo.GetCpuByName(name);
         }
 
         // POST api/values
