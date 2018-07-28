@@ -11,5 +11,6 @@ namespace Cheapware.Library.Models
 		public string Image { get; set; }
 		public string Speed { get; set; }
 		public int Cores { get; set; }
+        public decimal Price { get; set; }
     }
 }

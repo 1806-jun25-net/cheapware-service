@@ -99,7 +99,7 @@ namespace Cheapware.Library.Models
             Name = c.Name,
             Image = c.Img,
             Speed = c.Speed,
-            Cores = c.Cores
+            Cores = c.Cores,
             Price = c.Price
 
         };
