@@ -4,7 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-
+using Cheapware.Library.RepoClasses;
+using Cheapware.Library.Models;
 namespace CheapWare.API.Controllers
 {
     [Route("api/GraphicsCards")]
@@ -12,10 +13,16 @@ namespace CheapWare.API.Controllers
     public class GraphicsCardsController : ControllerBase
     {
         // GET: api/GraphicsCards
-        [HttpGet]
-        public ActionResult<IEnumerable<string>> GetGraphicsCards()
+        private ComputerRepo repo { get; }
+
+        public GraphicsCardsController(ComputerRepo _repo)
         {
-            return new string[] { "value1", "value2" };
+            repo = _repo;
+        }
+        [HttpGet]
+        public ActionResult<IEnumerable<GraphicsCard>> GetGraphicsCards()
+        {
+            return repo.GetGraphicsCards();
         }
 
         // GET: api/GraphicsCards/5
