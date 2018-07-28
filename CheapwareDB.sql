@@ -9,7 +9,7 @@ CREATE TABLE Cheap.Customers
 	Address NVARCHAR(128) NOT NULL,
 );
 INSERT INTO Cheap.Customers
-VALUES("Joseph Isble", "73 Redemption Rock Trail")
+VALUES('Joseph Isble', '73 Redemption Rock Trail')
 
 --DROP TABLE Cheap.Inventorys
 CREATE TABLE Cheap.Inventorys
