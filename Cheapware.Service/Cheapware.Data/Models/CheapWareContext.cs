@@ -107,6 +107,10 @@ namespace Cheapware.Data.Models
                 entity.Property(e => e.CustomerName)
                     .IsRequired()
                     .HasMaxLength(128);
+
+                entity.Property(e => e.UserName)
+                    .IsRequired()
+                    .HasMaxLength(128);
             });
 
             modelBuilder.Entity<GraphicsCards>(entity =>

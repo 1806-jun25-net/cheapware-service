@@ -5,9 +5,11 @@
 CREATE TABLE Cheap.Customers
 (
 	CustomerID INT IDENTITY NOT NULL,
+	UserName NVARCHAR(128) NOT NULL,
 	CustomerName NVARCHAR(128) NOT NULL,
 	Address NVARCHAR(128) NOT NULL,
 );
+
 INSERT INTO Cheap.Customers
 VALUES('Joseph Isble', '73 Redemption Rock Trail')
 
@@ -21,6 +23,12 @@ CREATE TABLE Cheap.Inventorys
 	Img NVARCHAR(128) NOT NULL
 );
 
+INSERT INTO Cheap.Inventorys
+VALUES('Intel Core i9-7940X Skylake X 14-Core 3.1 GHz Desktop Processor', 50, 'CPU', 1149.99,'i9 Skylake X')
+
+INSERT INTO Cheap.Inventorys
+VALUES('Intel Core i7-6900K 20M Broadwell-E 8-Core 3.2 GHz Desktop Processor', 20, 'CPU', 1402.99,'i7-6900k')
+
 --DROP TABLE Cheap.CPUs
 CREATE TABLE Cheap.CPUs
 (
@@ -31,6 +39,12 @@ CREATE TABLE Cheap.CPUs
 	Price MONEY NOT NULL,
 	Img NVARCHAR(128) NOT NULL
 );
+
+INSERT INTO Cheap.CPUs
+VALUES('Intel Core i9-7940X Skylake X 14-Core 3.1 GHz Desktop Processor', '3.1 GHz', 14, 1149.99,'i9 Skylake X')
+
+INSERT INTO Cheap.CPUs
+VALUES('Intel Core i7-6900K 20M Broadwell-E 8-Core 3.2 GHz Desktop Processor', '3.2 GHz', 8, 1402.99,'i7-6900k')
 
 --DROP TABLE Cheap.PowerSupplys
 CREATE TABLE Cheap.PowerSupplys
@@ -209,6 +223,8 @@ GO
 
 
 SELECT * FROM Cheap.Customers
+
+SELECT * FROM Cheap.Inventorys
 
 SELECT * FROM Cheap.CPUs
 
