@@ -23,15 +23,17 @@ namespace Cheapware.Service.Test
         [Fact]
         public void AddCustomerToDatabaseTest()
         {
-            //var mockSet = new Mock<DbSet<Customer>>();
-            //var mockContext = new Mock<CheapWareContext>();
-            //mockContext.Setup(m => m.Customers).Returns(mockSet.Object);
+            var mockSet = new Mock<DbSet<Customers>>();
 
-            //var service = new ComputerRepo(mockContext.Object);
-            //service.AddCustomer(new Customer { CustomerName = "Test Name", Address = "Test Address" });
+            var mockContext = new Mock<CheapWareContext>();
+            mockContext.Setup(m => m.Customers).Returns(mockSet.Object);
 
-            //mockSet.Verify(m => m.Add(It.IsAny<Customer>()), Times.Once);
-            //mockContext.Verify(m => m.SaveChanges(), Times.Once());
+            var service = new ComputerRepo(mockContext.Object);
+            service.AddCustomer(new Customer { CustomerName = "Test Name", Address = "Test Address" });
+            service.Save();
+
+            mockContext.Verify(m => m.Add(It.IsAny<Customers>()), Times.Once);
+            mockContext.Verify(m => m.SaveChanges(), Times.Once());
 
         }
     }
