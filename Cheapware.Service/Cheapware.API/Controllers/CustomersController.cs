@@ -38,16 +38,12 @@ namespace CheapWare.API.Controllers
 
         // POST: api/Customers
         [HttpPost]
-        public void Post([FromBody] Customer cust)
+        public ActionResult Post(Customer customer)
         {
-            Customer new_customer = new Customer()
-            {
-                Address = cust.Address,
-                CustomerName = cust.CustomerName
-            };
-
-            repo.AddCustomer(new_customer);
+            repo.AddCustomer(customer);
             repo.Save();
+
+            return CreatedAtRoute("GetCustomersById", new { id = customer.CustomerId }, customer);
         }
 
         // PUT: api/Customers/5

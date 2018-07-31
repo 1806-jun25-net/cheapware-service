@@ -57,7 +57,7 @@ namespace Cheapware.Library.RepoClasses
         }
         public void AddCustomer(Customer customer)
         {
-            db.Add(customer);
+            db.Add(Mapper.Map(customer));
         }
         public Customer GetCustomerById(int id)
         {

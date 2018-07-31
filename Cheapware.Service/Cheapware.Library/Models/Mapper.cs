@@ -11,13 +11,15 @@ namespace Cheapware.Library.Models
         public static Customer Map(data.Customers c) => new Customer
         {
             CustomerId = c.CustomerId,
+            UserName = c.UserName,
             CustomerName = c.CustomerName,
             Address = c.Address
         };
         public static data.Customers Map(Customer c) => new data.Customers
         {
-            CustomerId = c.CustomerId,
+            //CustomerId = c.CustomerId,
             CustomerName = c.CustomerName,
+            UserName = c.UserName,
             Address = c.Address
 
         };
