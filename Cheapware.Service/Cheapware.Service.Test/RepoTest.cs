@@ -1,6 +1,7 @@
 ﻿using Cheapware.Data.Models;
 using Cheapware.Library.Models;
 using Cheapware.Library.RepoClasses;
+using Microsoft.EntityFrameworkCore;
 using Moq;
 using System;
 using System.Collections.Generic;
@@ -20,18 +21,17 @@ namespace Cheapware.Service.Test
         }
         
         [Fact]
-        public void GetCustomersShouldReturnAListOfCustomers()
+        public void AddCustomerToDatabaseTest()
         {
+            //var mockSet = new Mock<DbSet<Customer>>();
+            //var mockContext = new Mock<CheapWareContext>();
+            //mockContext.Setup(m => m.Customers).Returns(mockSet.Object);
 
-            var customerList = new List<Customer>
-            {
-                new Customer { CustomerId = 1, Address = "test address 1", CustomerName = "test name"},
-                new Customer { CustomerId = 1, Address = "test address 2", CustomerName = "test name 2"}
+            //var service = new ComputerRepo(mockContext.Object);
+            //service.AddCustomer(new Customer { CustomerName = "Test Name", Address = "Test Address" });
 
-            };
-
-            
-
+            //mockSet.Verify(m => m.Add(It.IsAny<Customer>()), Times.Once);
+            //mockContext.Verify(m => m.SaveChanges(), Times.Once());
 
         }
     }
