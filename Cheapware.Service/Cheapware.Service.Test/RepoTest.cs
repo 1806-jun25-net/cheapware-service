@@ -34,7 +34,6 @@ namespace Cheapware.Service.Test
 
             mockContext.Verify(m => m.Add(It.IsAny<Customers>()), Times.Once);
             mockContext.Verify(m => m.SaveChanges(), Times.Once());
-
         }
     }
 }
