@@ -32,6 +32,7 @@ namespace Cheapware.Library.RepoClasses
         List<Inventory> GetInventoryByCategory(string cat);
         List<PartsOrder> GetOrdersByCustomerId(int id);
         void AddOrder(PartsOrder order);
+        PartsOrder GetOrderById(int id);
 
 
     }

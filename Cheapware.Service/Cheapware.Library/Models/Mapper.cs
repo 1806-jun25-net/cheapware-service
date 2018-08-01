@@ -50,7 +50,7 @@ namespace Cheapware.Library.Models
         };
         public static data.PartsOrders Map(PartsOrder p) => new data.PartsOrders
         {
-            OrderId = p.OrderId,
+            //OrderId = p.OrderId,
             CustomerId = p.CustomerId,
             TimeOfOrder = p.TimeOfOrder,
             FinalPrice = p.FinalPrice

@@ -7,37 +7,41 @@ using Cheapware.Library.Models;
 using Cheapware.Library.RepoClasses;
 namespace CheapWare.API.Controllers
 {
+    [Route("api/Orders")]
+    [ApiController]
     public class PartsOrdersController : Controller
     {
         private ComputerRepo repo { get; }
+
 
         public PartsOrdersController(ComputerRepo _repo)
         {
             repo = _repo;
         }
 
-        // GET: api/Customers
-        
+        [HttpGet("{id}", Name = "GetOrderById")]
+        public ActionResult<PartsOrder> GetOrderById(int id)
+        {
+            return repo.GetOrderById(id);
+        }
 
-        // GET: api/Customers/5
-        [HttpGet("{id}", Name = "GetOrdersByCustomerId")]
+
+        [HttpGet("{customerId}", Name = "GetOrdersByCustomerId")]
         public ActionResult<List<PartsOrder>> GetOrdersByCustomerId(int id)
         {
-
-
             return repo.GetOrdersByCustomerId(id);
         }
 
-        // POST: api/Customers
+        // POST: api/Orders
         [HttpPost]
         public ActionResult Post(PartsOrder order)
         {
             repo.AddOrder(order);
             repo.Save();
 
-            return CreatedAtRoute("GetCustomersById", new { id = order.OrderId }, order);
+            return CreatedAtRoute("GetOrderById", new { id = order.OrderId }, order);
         }
 
-       
+
     }
 }
