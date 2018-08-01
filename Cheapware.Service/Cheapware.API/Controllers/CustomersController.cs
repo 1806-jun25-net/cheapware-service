@@ -28,12 +28,10 @@ namespace CheapWare.API.Controllers
         }
 
         // GET: api/Customers/5
-        [HttpGet("{id}", Name = "GetCustomersById")]
-        public ActionResult<IEnumerable<string>> GetCustomersById(int id)
+        [HttpGet("{id}", Name = "GetCustomerById")]
+        public ActionResult<Customer> GetCustomerById(int id)
         {
-            var customer = repo.GetCustomerById(1);
-
-            return new List<string> { customer.CustomerName, customer.Address};
+            return repo.GetCustomerById(id);
         }
 
         // POST: api/Customers
@@ -46,17 +44,6 @@ namespace CheapWare.API.Controllers
             return CreatedAtRoute("GetCustomersById", new { id = customer.CustomerId }, customer);
         }
 
-        // PUT: api/Customers/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-
-        }
-
-        // DELETE: api/ApiWithActions/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
-        }
+        
     }
 }
