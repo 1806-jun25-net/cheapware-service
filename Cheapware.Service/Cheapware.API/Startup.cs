@@ -51,7 +51,7 @@ namespace Cheapware.API
                 options.Password.RequiredLength = 6;
                 options.Password.RequiredUniqueChars = 0;
                 options.Password.RequireLowercase = true;
-                options.Password.RequireNonAlphanumeric = true;
+                options.Password.RequireNonAlphanumeric = false;
                 options.Password.RequireUppercase = false;
 
                 options.User.AllowedUserNameCharacters =
