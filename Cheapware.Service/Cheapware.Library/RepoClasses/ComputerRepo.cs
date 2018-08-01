@@ -187,5 +187,21 @@ namespace Cheapware.Library.RepoClasses
             }
             return list;
         }
+
+        public List<PartsOrder> GetOrdersByCustomerId(int id)
+        {
+            List<PartsOrder> list = new List<PartsOrder>();
+            var orders = db.PartsOrders;
+            foreach(var order in orders)
+            {
+                if (order.CustomerId == id)
+                    list.Add(Mapper.Map(order));
+            }
+            return list;
+        }
+        public void AddOrder(PartsOrder order)
+        {
+            db.Add(Mapper.Map(order));
+        }
     }
 }

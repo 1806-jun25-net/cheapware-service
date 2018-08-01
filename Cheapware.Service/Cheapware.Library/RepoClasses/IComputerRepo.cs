@@ -30,6 +30,8 @@ namespace Cheapware.Library.RepoClasses
         List<HardDrive> GetHardDrives();
         HardDrive GetHardDriveByName(string name);
         List<Inventory> GetInventoryByCategory(string cat);
+        List<PartsOrder> GetOrdersByCustomerId(int id);
+        void AddOrder(PartsOrder order);
 
 
     }

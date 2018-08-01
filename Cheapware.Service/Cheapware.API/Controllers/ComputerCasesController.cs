@@ -15,6 +15,10 @@ namespace CheapWare.API.Controllers
     {
         private ComputerRepo repo { get; }
         // GET: api/ComputerCases
+        public ComputerCasesController(ComputerRepo _repo)
+        {
+            repo = _repo;
+        }
         [HttpGet]
         public ActionResult<List<ComputerCase>> GetComputerCases()
         {
