@@ -20,34 +20,20 @@ namespace CheapWare.API.Controllers
             repo = _repo;
         }
         [HttpGet]
-        public ActionResult<IEnumerable<GraphicsCard>> GetGraphicsCards()
+        public ActionResult<List<GraphicsCard>> GetGraphicsCards()
         {
             return repo.GetGraphicsCards();
         }
 
         // GET: api/GraphicsCards/5
-        [HttpGet("{id}", Name = "GetGraphicsCardsById")]
-        public ActionResult<string> GetGraphicsCardsById(int id)
+        
+
+        [HttpGet("{name}", Name = "GetGraphicsCardByName")]
+        public ActionResult<GraphicsCard> GetGraphicsCardsByName(string name)
         {
-            return "value";
+            return repo.GetGraphicsCardByName(name);
         }
 
-        // POST: api/GraphicsCards
-        [HttpPost]
-        public void Post([FromBody] string value)
-        {
-        }
 
-        // PUT: api/GraphicsCards/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
-
-        // DELETE: api/ApiWithActions/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
-        }
     }
 }

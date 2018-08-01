@@ -176,5 +176,32 @@ namespace Cheapware.Library.RepoClasses
             }
             return null;
         }
+        public List<Inventory> GetInventoryByCategory(string cat)
+        {
+            var inventory = db.Inventorys;
+            List<Inventory> list = new List<Inventory>();
+            foreach(var item in inventory)
+            {
+                if (item.Category == cat)
+                    list.Add(Mapper.Map(item));
+            }
+            return list;
+        }
+
+        public List<PartsOrder> GetOrdersByCustomerId(int id)
+        {
+            List<PartsOrder> list = new List<PartsOrder>();
+            var orders = db.PartsOrders;
+            foreach(var order in orders)
+            {
+                if (order.CustomerId == id)
+                    list.Add(Mapper.Map(order));
+            }
+            return list;
+        }
+        public void AddOrder(PartsOrder order)
+        {
+            db.Add(Mapper.Map(order));
+        }
     }
 }

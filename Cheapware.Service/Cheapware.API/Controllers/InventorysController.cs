@@ -4,43 +4,34 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-
+using Cheapware.Library.RepoClasses;
+using Cheapware.Library.Models;
 namespace CheapWare.API.Controllers
 {
     [Route("api/Inventorys")]
     [ApiController]
     public class InventorysController : ControllerBase
     {
-        // GET: api/Inventorys
+        // GET: api/GraphicsCards
+        private ComputerRepo repo { get; }
+
+        public InventorysController(ComputerRepo _repo)
+        {
+            repo = _repo;
+        }
         [HttpGet]
-        public ActionResult<IEnumerable<string>> GetInventory()
+        public ActionResult<List<Inventory>> GetInventory()
         {
-            return new string[] { "value1", "value2" };
+            return repo.GetInventory();
         }
 
-        // GET: api/Inventorys/5
-        [HttpGet("{id}", Name = "GetInventoryById")]
-        public ActionResult<string> GetInventoryById(int id)
-        {
-            return "value";
-        }
+        // GET: api/GraphicsCards/5
 
-        // POST: api/Inventorys
-        [HttpPost]
-        public void Post([FromBody] string value)
-        {
-        }
 
-        // PUT: api/Inventorys/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        [HttpGet("{category}", Name = "GetInventoryByCategory")]
+        public ActionResult<List<Inventory>> GetInventoryByCategory(string cat)
         {
-        }
-
-        // DELETE: api/ApiWithActions/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
+            return repo.GetInventoryByCategory(cat);
         }
     }
 }

@@ -4,6 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Cheapware.Library.Models;
+using Cheapware.Library.RepoClasses;
 
 namespace CheapWare.API.Controllers
 {
@@ -11,36 +13,26 @@ namespace CheapWare.API.Controllers
     [ApiController]
     public class PowerSupplysController : ControllerBase
     {
-        // GET: api/PowerSupply
+        private ComputerRepo repo { get; }
+
+        public PowerSupplysController(ComputerRepo _repo)
+        {
+            repo = _repo;
+        }
+        // GET api/values
         [HttpGet]
-        public ActionResult<IEnumerable<string>> GetPowerSupplys()
+        public ActionResult<List<PowerSupply>> GetPowerSupplys()
         {
-            return new string[] { "value1", "value2" };
+
+            return repo.GetPowerSupplys();
         }
 
-        // GET: api/PowerSupply/5
-        [HttpGet("{id}", Name = "GetPowerSupplysById")]
-        public ActionResult<string> GetPowerSupplysById(int id)
+        // GET api/values/5
+        [HttpGet("{name}", Name = "GetPowerSupplyByName")]
+        public ActionResult<PowerSupply> GetPowerSupplyByName(string name)
         {
-            return "value";
-        }
 
-        // POST: api/PowerSupply
-        [HttpPost]
-        public void Post([FromBody] string value)
-        {
-        }
-
-        // PUT: api/PowerSupply/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
-
-        // DELETE: api/ApiWithActions/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
+            return repo.GetPowerSupplyByName(name);
         }
     }
 }
