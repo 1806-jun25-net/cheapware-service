@@ -3,7 +3,8 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using Cheapware.Library.Models;
-
+using System.Linq;
+using System.Threading.Tasks;
 namespace Cheapware.Library.RepoClasses
 {
     public class ComputerRepo : IComputerRepo
@@ -72,13 +73,16 @@ namespace Cheapware.Library.RepoClasses
         public Customer GetCustomerById(int id)
         {
             var customers = db.Customers;
-            foreach (var customer in customers)
+            foreach(var customer in customers)
             {
                 if (customer.CustomerId == id)
                     return Mapper.Map(customer);
             }
             return null;
         }
+            
+            
+           
         public Customer GetCustomerByName(string name)
         {
             var customers = db.Customers;
