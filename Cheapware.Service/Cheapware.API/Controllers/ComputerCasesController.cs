@@ -22,28 +22,12 @@ namespace CheapWare.API.Controllers
         }
 
         // GET: api/ComputerCases/5
-        [HttpGet("{id}", Name = "GetComputerCasesById")]
-        public ActionResult<string> GetComputerCasesById(int id)
+        [HttpGet("{name}", Name = "GetComputerCasesByName")]
+        public ActionResult<ComputerCase> GetComputerCasesByName(string name)
         {
-            return "value";
+            return repo.GetComputerCaseByName(name);
         }
 
-        // POST: api/ComputerCases
-        [HttpPost]
-        public void Post([FromBody] string value)
-        {
-        }
-
-        // PUT: api/ComputerCases/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
-
-        // DELETE: api/ApiWithActions/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
-        }
+       
     }
 }

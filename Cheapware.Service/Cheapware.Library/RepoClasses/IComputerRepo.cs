@@ -29,6 +29,7 @@ namespace Cheapware.Library.RepoClasses
         Customer GetCustomerByUserName(string name);
         List<HardDrive> GetHardDrives();
         HardDrive GetHardDriveByName(string name);
+        List<Inventory> GetInventoryByCategory(string cat);
 
 
     }
