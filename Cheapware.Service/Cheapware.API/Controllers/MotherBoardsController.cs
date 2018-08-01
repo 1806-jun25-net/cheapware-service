@@ -4,7 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-
+using Cheapware.Library.Models;
+using Cheapware.Library.RepoClasses;
 namespace CheapWare.API.Controllers
 {
     [Route("api/MotherBoards")]
@@ -12,35 +13,27 @@ namespace CheapWare.API.Controllers
     public class MotherBoardsController : ControllerBase
     {
         // GET api/values
-        [HttpGet]
-        public ActionResult<IEnumerable<string>> GetMotherBoards()
+        
+        private ComputerRepo repo { get; }
+
+        public MotherBoardsController(ComputerRepo _repo)
         {
-            return new string[] { "value1", "value2" };
+            repo = _repo;
+        }
+        // GET api/values
+        [HttpGet]
+        public ActionResult<List<MotherBoard>> GetMotherBoards()
+        {
+
+            return repo.GetMotherBoards();
         }
 
         // GET api/values/5
-        [HttpGet("{id}", Name = "GetMotherBoardsById")]
-        public ActionResult<string> GetMotherBoardsById(int id)
+        [HttpGet("{name}", Name = "GetMotherBoardByName")]
+        public ActionResult<MotherBoard> GetCPUsByName(string name)
         {
-            return "value";
-        }
 
-        // POST api/values
-        [HttpPost]
-        public void Post([FromBody] string value)
-        {
-        }
-
-        // PUT api/values/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
-
-        // DELETE api/values/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
+            return repo.GetMotherBoardByName(name);
         }
     }
 }

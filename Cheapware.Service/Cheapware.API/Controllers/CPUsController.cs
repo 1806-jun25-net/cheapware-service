@@ -21,7 +21,7 @@ namespace CheapWare.API.Controllers
         }
         // GET api/values
         [HttpGet]
-        public ActionResult<List<CPU>> GetAll()
+        public ActionResult<List<CPU>> GetCpus()
         {
 
             return repo.GetCpus();

@@ -21,7 +21,7 @@ namespace CheapWare.API.Controllers
         }
         // GET api/values
         [HttpGet]
-        public ActionResult<List<HardDrive>> GetAll()
+        public ActionResult<List<HardDrive>> GetHardDrives()
         {
 
             return repo.GetHardDrives();
