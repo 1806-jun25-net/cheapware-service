@@ -26,5 +26,10 @@ namespace Cheapware.Library.RepoClasses
         PowerSupply GetPowerSupplyByName(string name);
         List<RAM> GetRams();
         RAM GetRamByName(string name);
+        Customer GetCustomerByUserName(string name);
+        List<HardDrive> GetHardDrives();
+        HardDrive GetHardDriveByName(string name);
+
+
     }
 }

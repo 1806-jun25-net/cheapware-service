@@ -4,7 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-
+using Cheapware.Library.Models;
+using Cheapware.Library.RepoClasses;
 namespace CheapWare.API.Controllers
 {
     [Route("api/HardDrives")]
@@ -12,35 +13,26 @@ namespace CheapWare.API.Controllers
     public class HardDrivesController : ControllerBase
     {
         // GET: api/HardDrives
+        private ComputerRepo repo { get; }
+
+        public HardDrivesController(ComputerRepo _repo)
+        {
+            repo = _repo;
+        }
+        // GET api/values
         [HttpGet]
-        public ActionResult<IEnumerable<string>> GetHardDrive()
+        public ActionResult<List<HardDrive>> GetAll()
         {
-            return new string[] { "value1", "value2" };
+
+            return repo.GetHardDrives();
         }
 
-        // GET: api/HardDrives/5
-        [HttpGet("{id}", Name = "GetHardDriveById")]
-        public ActionResult<string> GetHardDriveById(int id)
+        // GET api/values/5
+        [HttpGet("{name}", Name = "GetHardDriveByName")]
+        public ActionResult<HardDrive> GetHardDriveByName(string name)
         {
-            return "value";
+            return repo.GetHardDriveByName(name);
         }
 
-        // POST: api/HardDrives
-        [HttpPost]
-        public void Post([FromBody] string value)
-        {
-        }
-
-        // PUT: api/HardDrives/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
-
-        // DELETE: api/ApiWithActions/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
-        }
     }
 }

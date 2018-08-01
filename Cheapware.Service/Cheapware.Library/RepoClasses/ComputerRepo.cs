@@ -51,6 +51,16 @@ namespace Cheapware.Library.RepoClasses
             db.SaveChanges();
         }
 
+        public Customer GetCustomerByUserName(string name)
+        {
+            var users = db.Customers;
+            foreach(var user in users)
+            {
+                if (user.UserName == name)
+                    return Mapper.Map(user);
+            }
+            return null;
+        }
         public List<Customer> GetCustomers()
         {
             return Mapper.Map(db.Customers);
@@ -152,6 +162,19 @@ namespace Cheapware.Library.RepoClasses
             }
             return null;
         }
-
+        public List<HardDrive> GetHardDrives()
+        {
+            return Mapper.Map(db.HardDrives);
+        }
+        public HardDrive GetHardDriveByName(string name)
+        {
+            var hDrives = db.HardDrives;
+            foreach(var drive in hDrives)
+            {
+                if (drive.Name == name)
+                    return Mapper.Map(drive);
+            }
+            return null;
+        }
     }
 }
