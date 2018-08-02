@@ -20,18 +20,18 @@ namespace CheapWare.API.Controllers
         }
         // GET api/values
         [HttpGet]
-        public ActionResult<List<RAM>> GetRams()
+        public async Task<ActionResult<List<RAM>>> GetRams()
         {
 
-            return repo.GetRams();
+            return await repo.GetRams();
         }
 
         // GET api/values/5
         [HttpGet("{name}", Name = "GetRamByName")]
-        public ActionResult<RAM> GetRamByName(string name)
+        public async Task<ActionResult<RAM>> GetRamByName(string name)
         {
 
-            return repo.GetRamByName(name);
+            return await repo.GetRamByName(name);
         }
     }
 }

@@ -21,18 +21,18 @@ namespace CheapWare.API.Controllers
         }
         // GET api/values
         [HttpGet]
-        public ActionResult<List<CPU>> GetCpus()
+        public async Task<ActionResult<List<CPU>>> GetCpus()
         {
 
-            return repo.GetCpus();
+            return await repo.GetCpus();
         }
 
         // GET api/values/5
         [HttpGet("{name}", Name = "GetCPUsByName")]
-        public ActionResult<CPU> GetCPUsByName(string name)
+        public async Task<ActionResult<CPU>> GetCPUsByName(string name)
         {
 
-            return repo.GetCpuByName(name);
+            return await repo.GetCpuByName(name);
         }
 
     }

@@ -22,18 +22,18 @@ namespace CheapWare.API.Controllers
         }
         // GET api/values
         [HttpGet]
-        public ActionResult<List<MotherBoard>> GetMotherBoards()
+        public async Task<ActionResult<List<MotherBoard>>> GetMotherBoards()
         {
 
-            return repo.GetMotherBoards();
+            return await repo.GetMotherBoards();
         }
 
         // GET api/values/5
         [HttpGet("{name}", Name = "GetMotherBoardByName")]
-        public ActionResult<MotherBoard> GetCPUsByName(string name)
+        public async Task<ActionResult<MotherBoard>> GetCPUsByName(string name)
         {
 
-            return repo.GetMotherBoardByName(name);
+            return await repo.GetMotherBoardByName(name);
         }
     }
 }

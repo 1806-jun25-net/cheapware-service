@@ -21,18 +21,18 @@ namespace CheapWare.API.Controllers
         }
         // GET api/values
         [HttpGet]
-        public ActionResult<List<PowerSupply>> GetPowerSupplys()
+        public async Task<ActionResult<List<PowerSupply>>> GetPowerSupplys()
         {
 
-            return repo.GetPowerSupplys();
+            return await repo.GetPowerSupplys();
         }
 
         // GET api/values/5
         [HttpGet("{name}", Name = "GetPowerSupplyByName")]
-        public ActionResult<PowerSupply> GetPowerSupplyByName(string name)
+        public async Task<ActionResult<PowerSupply>> GetPowerSupplyByName(string name)
         {
 
-            return repo.GetPowerSupplyByName(name);
+            return await repo.GetPowerSupplyByName(name);
         }
     }
 }

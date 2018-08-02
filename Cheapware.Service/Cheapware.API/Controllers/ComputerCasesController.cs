@@ -20,16 +20,16 @@ namespace CheapWare.API.Controllers
             repo = _repo;
         }
         [HttpGet]
-        public ActionResult<List<ComputerCase>> GetComputerCases()
+        public async Task<ActionResult<List<ComputerCase>>> GetComputerCases()
         {
-            return repo.GetComputerCases();
+            return await repo.GetComputerCases();
         }
 
         // GET: api/ComputerCases/5
         [HttpGet("{name}", Name = "GetComputerCasesByName")]
-        public ActionResult<ComputerCase> GetComputerCasesByName(string name)
+        public async Task<ActionResult<ComputerCase>> GetComputerCasesByName(string name)
         {
-            return repo.GetComputerCaseByName(name);
+            return await repo.GetComputerCaseByName(name);
         }
 
        

@@ -22,24 +22,24 @@ namespace CheapWare.API.Controllers
 
         // GET: api/Customers
         [HttpGet]
-        public ActionResult<IEnumerable<Customer>> GetCustomers()
+        public async Task<ActionResult<IEnumerable<Customer>>> GetCustomers()
         {
-            return repo.GetCustomers();
+            return await repo.GetCustomers();
         }
 
         // GET: api/Customers/5
         [HttpGet("{id}", Name = "GetCustomerById")]
-        public ActionResult<Customer> GetCustomerById(int id)
+        public async Task<ActionResult<Customer>> GetCustomerById(int id)
         {
-            return repo.GetCustomerById(id);
+            return await repo.GetCustomerById(id);
         }
 
         // POST: api/Customers
         [HttpPost]
-        public ActionResult Post(Customer customer)
+        public async Task<ActionResult> Post(Customer customer)
         {
             repo.AddCustomer(customer);
-            repo.Save();
+            await repo.Save();
 
             return CreatedAtRoute("GetCustomersById", new { id = customer.CustomerId }, customer);
         }
