@@ -24,7 +24,7 @@ namespace Cheapware.Library.RepoClasses
 
         public async Task<ComputerCase> GetComputerCaseByName(string name)
         {
-            return Mapper.Map(await db.ComputerCases.FindAsync(name));
+            return Mapper.Map(await db.ComputerCases.Where(x => x.Name == name).SingleAsync());
         }
         public async Task<List<CPU>> GetCpus()
         {
@@ -69,7 +69,7 @@ namespace Cheapware.Library.RepoClasses
         }
         public async Task<GraphicsCard> GetGraphicsCardByName(string name)
         {
-            return Mapper.Map(await db.GraphicsCards.FindAsync(name));
+            return Mapper.Map(await db.GraphicsCards.Where(x => x.Name == name).SingleAsync());
         }
         public async Task<List<Inventory>> GetInventory()
         {
@@ -95,7 +95,7 @@ namespace Cheapware.Library.RepoClasses
         }
         public async Task<PowerSupply> GetPowerSupplyByName(string name)
         {
-            return Mapper.Map(await db.PowerSupplys.FindAsync(name));
+            return Mapper.Map(await db.PowerSupplys.Where(x => x.Name == name).SingleAsync());
         }
         public async Task<List<RAM>> GetRams()
         {
@@ -103,7 +103,7 @@ namespace Cheapware.Library.RepoClasses
         }
         public async Task<RAM> GetRamByName(string name)
         {
-            return Mapper.Map(await db.Rams.FindAsync(name));
+            return Mapper.Map(await db.Rams.Where(x => x.Name ==name).SingleAsync());
         }
         public async Task<List<HardDrive>> GetHardDrives()
         { 
@@ -111,7 +111,7 @@ namespace Cheapware.Library.RepoClasses
         }
         public async Task<HardDrive> GetHardDriveByName(string name)
         {
-            return Mapper.Map(await db.HardDrives.FindAsync(name));
+            return Mapper.Map(await db.HardDrives.Where(x => x.Name == name).SingleAsync());
         }
         public async Task<List<Inventory>> GetInventoryByCategory(string cat)
         {
