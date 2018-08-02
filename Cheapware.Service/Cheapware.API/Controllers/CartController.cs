@@ -27,7 +27,7 @@ namespace CheapWare.API.Controllers
         }
 
 
-       [HttpGet("cartId", Name = "GetCartById")]
+       [HttpGet("{cartId}", Name = "GetCartById")]
        public ActionResult<Cart> GetCartById(int id)
        {
             return repo.GetCartById(id);
