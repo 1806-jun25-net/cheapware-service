@@ -87,7 +87,7 @@ namespace Cheapware.Library.RepoClasses
 
         public async Task<MotherBoard> GetMotherBoardByName(string name)
         {
-            return Mapper.Map(await db.MotherBoards.FindAsync(name));
+            return Mapper.Map(await db.MotherBoards.Where(x => x.Name == name).SingleAsync());
         }
         public async Task<List<PowerSupply>> GetPowerSupplys()
         {
