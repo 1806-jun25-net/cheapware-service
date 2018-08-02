@@ -217,5 +217,17 @@ namespace Cheapware.Library.RepoClasses
             }
             return null;
         }
+
+        public List<Cart> GetCartByCustomerId(int id)
+        {
+            var carts = db.Carts;
+            List<Cart> list = new List<Cart>();
+            foreach(var cart in carts)
+            {
+                if (cart.CustomerId == id)
+                    list.Add(Mapper.Map(cart));
+            }
+            return list;
+        }
     }
 }

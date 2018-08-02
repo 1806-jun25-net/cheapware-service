@@ -201,6 +201,19 @@ namespace Cheapware.Library.Models
 
         };
 
+        public static Cart Map(data.Carts cart) => new Cart
+        {
+            CartId = cart.CartId,
+            CustomerId = cart.CustomerId,
+            ProductId = cart.ProductName
+        };
+
+        public static data.Carts Map(Cart cart) => new data.Carts
+        {
+            CustomerId = cart.CustomerId,
+            ProductName = cart.ProductId
+        };
+
 
         public static List<Customer> Map(IEnumerable<data.Customers> customers) => customers.Select(Map).ToList();
         public static List<data.Customers> Map(IEnumerable<Customer> customers) => customers.Select(Map).ToList();

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Cheapware.Data.Models
+namespace Cheapware.Library.Models
 {
     public class Cart
     {
