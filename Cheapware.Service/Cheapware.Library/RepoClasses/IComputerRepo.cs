@@ -34,6 +34,8 @@ namespace Cheapware.Library.RepoClasses
         void AddOrder(PartsOrder order);
         PartsOrder GetOrderById(int id);
         List<Cart> GetCartByCustomerId(int id);
+        void AddCart(Cart cart);
+        Cart GetCartById(int id);
 
 
     }

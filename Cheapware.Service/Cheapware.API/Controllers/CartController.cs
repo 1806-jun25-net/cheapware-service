@@ -21,26 +21,27 @@ namespace CheapWare.API.Controllers
         }
 
         [HttpGet("{id}", Name = "GetCartByCustomerId")]
-        public ActionResult<Cart> GetCartByCustomerId(int id)
+        public ActionResult<List<Cart>> GetCartByCustomerId(int id)
         {
             return repo.GetCartByCustomerId(id);
         }
 
 
-        [HttpGet("{customerId}", Name = "GetOrdersByCustomerId")]
-        public ActionResult<List<PartsOrder>> GetOrdersByCustomerId(int id)
-        {
-            return repo.GetOrdersByCustomerId(id);
-        }
-
+       [HttpGet("cartId", Name = "GetCartById")]
+       public ActionResult<Cart> GetCartById(int id)
+       {
+            return repo.GetCartById(id);
+       }
         // POST: api/Orders
         [HttpPost]
-        public ActionResult Post(PartsOrder order)
+        public ActionResult Post(Cart cart)
         {
-            repo.AddOrder(order);
+            repo.AddCart(cart);
             repo.Save();
 
-            return CreatedAtRoute("GetOrderById", new { id = order.OrderId }, order);
+            return CreatedAtRoute("GetCartById", new { id = cart.CartId }, cart);
         }
+
+        
     }
 }
