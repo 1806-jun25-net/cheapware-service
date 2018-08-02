@@ -33,7 +33,7 @@ namespace Cheapware.Library.RepoClasses
 
         public async Task<CPU> GetCpuByName(string name)
         {
-            return Mapper.Map(await db.Cpus.Where(x => x.Name == name).SingleAsync();
+            return Mapper.Map(await db.Cpus.Where(x => x.Name == name).SingleAsync());
         }
         public async Task Save()
         {
