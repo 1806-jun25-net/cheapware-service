@@ -226,7 +226,7 @@ namespace Cheapware.Library.RepoClasses
         public async Task<Cart> GetCartById(int id)
         {
             var cart = db.Carts.FindAsync(id);
-            return await Mapper.Map(cart));
+            return await Mapper.Map(cart);
         }
 
         public async Task<Cart[]> GetCartByCustomerId(int id)
