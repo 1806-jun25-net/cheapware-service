@@ -27,7 +27,7 @@ namespace Cheapware.Service.Test
             await service.SaveAsync();
 
             mockContext.Verify(m => m.Add(It.IsAny<Customers>()), Times.Once);
-            mockContext.Verify(m => m.SaveChanges(), Times.Once());
+            mockContext.Verify(async m => await m.SaveChangesAsync(), Times.Once());
         }
 
 
@@ -55,6 +55,32 @@ namespace Cheapware.Service.Test
             Assert.Equal("test1username", customers[0].UserName);
             Assert.Equal("test2username", customers[1].UserName);
             Assert.Equal("test3username", customers[2].UserName);
+        }
+
+        [Fact]
+        public async void GetInventorysFromDatabaseTest()
+        {
+            var data = new List<Inventorys>
+            {
+                new Inventorys{Name = "test1name", Quantity = 50, Category = "CPU", Price = 129.99M},
+                new Inventorys{Name = "test2name", Quantity = 50, Category = "RAM", Price = 129.99M},
+                new Inventorys{Name = "test3name", Quantity = 50, Category = "Harddrive", Price = 129.99M},
+            };
+
+            var mockSet = new Mock<DbSet<Inventorys>>();
+
+            mockSet.As<IQueryable<Inventorys>>().Setup(m => m.GetEnumerator()).Returns(data.GetEnumerator());
+
+            var mockContext = new Mock<CheapWareContext>();
+            mockContext.Setup(m => m.Inventorys).Returns(mockSet.Object);
+
+            var service = new ComputerRepo(mockContext.Object);
+            var inventorys = await service.GetInventory();
+
+            Assert.Equal(3, inventorys.Count);
+            Assert.Equal("test1name", inventorys[0].Name);
+            Assert.Equal("test2name", inventorys[1].Name);
+            Assert.Equal("test3name", inventorys[2].Name);
         }
 
         [Fact]
