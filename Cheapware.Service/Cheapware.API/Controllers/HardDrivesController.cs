@@ -21,17 +21,17 @@ namespace CheapWare.API.Controllers
         }
         // GET api/values
         [HttpGet]
-        public ActionResult<List<HardDrive>> GetHardDrives()
+        public async Task<ActionResult<List<HardDrive>>> GetHardDrives()
         {
 
-            return repo.GetHardDrives();
+            return await repo.GetHardDrives();
         }
 
         // GET api/values/5
         [HttpGet("{name}", Name = "GetHardDriveByName")]
-        public ActionResult<HardDrive> GetHardDriveByName(string name)
+        public async Task<ActionResult<HardDrive>> GetHardDriveByName(string name)
         {
-            return repo.GetHardDriveByName(name);
+            return await repo.GetHardDriveByName(name);
         }
 
     }

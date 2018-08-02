@@ -20,24 +20,24 @@ namespace CheapWare.API.Controllers
         }
 
         [HttpGet("{id}", Name = "GetOrderById")]
-        public ActionResult<PartsOrder> GetOrderById(int id)
+        public async Task<ActionResult<PartsOrder>> GetOrderById(int id)
         {
-            return repo.GetOrderById(id);
+            return await repo.GetOrderById(id);
         }
 
 
         [HttpGet("{customerId}", Name = "GetOrdersByCustomerId")]
-        public ActionResult<List<PartsOrder>> GetOrdersByCustomerId(int id)
+        public async Task<ActionResult<List<PartsOrder>>> GetOrdersByCustomerId(int id)
         {
-            return repo.GetOrdersByCustomerId(id);
+            return await repo.GetOrdersByCustomerId(id);
         }
 
         // POST: api/Orders
         [HttpPost]
-        public ActionResult Post(PartsOrder order)
+        public async Task<ActionResult> Post(PartsOrder order)
         {
             repo.AddOrder(order);
-            repo.Save();
+            await repo.Save();
 
             return CreatedAtRoute("GetOrderById", new { id = order.OrderId }, order);
         }

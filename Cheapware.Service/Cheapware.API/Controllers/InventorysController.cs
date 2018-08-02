@@ -20,18 +20,18 @@ namespace CheapWare.API.Controllers
             repo = _repo;
         }
         [HttpGet]
-        public ActionResult<List<Inventory>> GetInventory()
+        public async Task<ActionResult<List<Inventory>>> GetInventory()
         {
-            return repo.GetInventory();
+            return await repo.GetInventory();
         }
 
         // GET: api/GraphicsCards/5
 
 
         [HttpGet("{category}", Name = "GetInventoryByCategory")]
-        public ActionResult<List<Inventory>> GetInventoryByCategory(string cat)
+        public async Task<ActionResult<List<Inventory>>> GetInventoryByCategory(string cat)
         {
-            return repo.GetInventoryByCategory(cat);
+            return await repo.GetInventoryByCategory(cat);
         }
     }
 }

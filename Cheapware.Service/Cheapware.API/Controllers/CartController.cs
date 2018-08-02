@@ -21,7 +21,7 @@ namespace CheapWare.API.Controllers
         }
 
         [HttpGet("{id}", Name = "GetCartByCustomerId")]
-        public async Task<Cart[]> GetCartByCustomerId(int id)
+        public async Task<List<Cart>> GetCartByCustomerId(int id)
         {
             return await repo.GetCartByCustomerId(id);
         }
@@ -34,10 +34,10 @@ namespace CheapWare.API.Controllers
        }
         // POST: api/Orders
         [HttpPost]
-        public ActionResult Post(Cart cart)
+        public async Task<ActionResult> Post(Cart cart)
         {
             repo.AddCart(cart);
-            repo.Save();
+            await repo.Save();
 
             return CreatedAtRoute("GetCartById", new { id = cart.CartId }, cart);
         }
