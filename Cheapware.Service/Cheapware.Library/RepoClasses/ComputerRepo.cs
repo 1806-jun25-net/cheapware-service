@@ -17,95 +17,59 @@ namespace Cheapware.Library.RepoClasses
         {
             db = _db;
         } 
-        public List<ComputerCase> GetComputerCases()
+        public async Task<List<ComputerCase>> GetComputerCases()
         {
-            return Mapper.Map(db.ComputerCases);
+            return Mapper.Map(await db.ComputerCases.ToListAsync());
         }
 
-        public ComputerCase GetComputerCaseByName(string name)
+        public async Task<ComputerCase> GetComputerCaseByName(string name)
         {
-            var cases = db.ComputerCases;
-            foreach(var cCase in cases)
-            {
-                if (cCase.Name == name)
-                    return Mapper.Map(cCase);
-            }
-            return null;
+            return Mapper.Map(await db.ComputerCases.FindAsync(name));
         }
-        public List<CPU> GetCpus()
+        public async Task<List<CPU>> GetCpus()
         {
-            return Mapper.Map(db.Cpus);
+            return Mapper.Map(await db.Cpus.ToListAsync());
         }
 
-        public CPU GetCpuByName(string name)
+        public async Task<CPU> GetCpuByName(string name)
         {
-            var cpus = db.Cpus;
-            foreach (var cpu in cpus)
-            {
-                if (cpu.Name == name)
-                    return Mapper.Map(cpu);
-            }
-            return null;
+            return Mapper.Map(await db.Cpus.FindAsync(name));
         }
         public async Task Save()
         {
             await db.SaveChangesAsync();
         }
 
-        public Customer GetCustomerByUserName(string name)
+        public async Task<Customer> GetCustomerByUserName(string name)
         {
-            var users = db.Customers;
-            foreach(var user in users)
-            {
-                if (user.UserName == name)
-                    return Mapper.Map(user);
-            }
-            return null;
+            return Mapper.Map(await db.Customers.Where(x => x.UserName == name).SingleAsync());
         }
-        public List<Customer> GetCustomers()
+        public async Task<List<Customer>> GetCustomers()
         {
-            return Mapper.Map(db.Customers);
+            return Mapper.Map(await db.Customers.ToListAsync());
         }
         public void AddCustomer(Customer customer)
         {
             db.Add(Mapper.Map(customer));
         }
-        public Customer GetCustomerById(int id)
+        public async Task<Customer> GetCustomerById(int id)
         {
-            var customers = db.Customers;
-            foreach(var customer in customers)
-            {
-                if (customer.CustomerId == id)
-                    return Mapper.Map(customer);
-            }
-            return null;
+            return Mapper.Map(await db.Customers.FindAsync(id));
         }
             
             
            
-        public Customer GetCustomerByName(string name)
+        public async Task<Customer> GetCustomerByName(string name)
         {
-            var customers = db.Customers;
-            foreach (var customer in customers)
-            {
-                if (customer.CustomerName == name)
-                    return Mapper.Map(customer);
-            }
-            return null;
+            return Mapper.Map(await db.Customers.Where(x => x.CustomerName == name).SingleAsync());
         }
-        public List<GraphicsCard> GetGraphicsCards()
+        public async Task<List<GraphicsCard>> GetGraphicsCards()
         {
-            return Mapper.Map(db.GraphicsCards);
+            return Mapper.Map(await db.GraphicsCards.ToListAsync());
         }
-        public GraphicsCard GetGraphicsCardByName(string name)
+        public async Task<GraphicsCard> GetGraphicsCardByName(string name)
         {
-            var cards = db.GraphicsCards;
-            foreach (var card in cards)
-            {
-                if (card.Name == name)
-                    return Mapper.Map(card);
-            }
-            return null;
+            return Mapper.Map(await db.GraphicsCards.FindAsync(name));
         }
         public async Task<List<Inventory>> GetInventory()
         {
@@ -116,58 +80,38 @@ namespace Cheapware.Library.RepoClasses
         {
             return Mapper.Map(await db.Inventorys.FindAsync(name));
         }
-        public List<MotherBoard> GetMotherBoards()
+        public async Task<List<MotherBoard>> GetMotherBoards()
         {
-            return Mapper.Map(db.MotherBoards);
+            return Mapper.Map(await db.MotherBoards.ToListAsync());
         }
 
-        public MotherBoard GetMotherBoardByName(string name)
+        public async Task<MotherBoard> GetMotherBoardByName(string name)
         {
-            var mBoards = db.MotherBoards;
-            foreach (var board in mBoards)
-            {
-                if (board.Name == name)
-                {
-                    return Mapper.Map(board);
-                }
-            }
-            return null;
+            return Mapper.Map(await db.MotherBoards.FindAsync(name));
         }
-        public List<PowerSupply> GetPowerSupplys()
+        public async Task<List<PowerSupply>> GetPowerSupplys()
         {
-            return Mapper.Map(db.PowerSupplys);
+            return Mapper.Map(await db.PowerSupplys.ToListAsync());
         }
-        public PowerSupply GetPowerSupplyByName(string name)
+        public async Task<PowerSupply> GetPowerSupplyByName(string name)
         {
-            var pSupplys = db.PowerSupplys;
-            foreach (var pSupply in pSupplys)
-            {
-                if (pSupply.Name == name)
-                    return Mapper.Map(pSupply);
-            }
-            return null;
+            return Mapper.Map(await db.PowerSupplys.FindAsync(name));
         }
-        public List<RAM> GetRams()
+        public async Task<List<RAM>> GetRams()
         {
-            return Mapper.Map(db.Rams);
+            return Mapper.Map(await db.Rams.ToListAsync());
         }
-        public RAM GetRamByName(string name)
+        public async Task<RAM> GetRamByName(string name)
         {
-            var rams = db.Rams;
-            foreach (var ram in rams)
-            {
-                if (ram.Name == name)
-                    return Mapper.Map(ram);
-            }
-            return null;
+            return Mapper.Map(await db.Rams.FindAsync(name));
         }
-        public async  Task<List<HardDrive>> GetHardDrives()
+        public async Task<List<HardDrive>> GetHardDrives()
         { 
             return Mapper.Map(await db.HardDrives.ToListAsync());
         }
         public async Task<HardDrive> GetHardDriveByName(string name)
         {
-            return Mapper.Map(await db.HardDrives.Where(x => x.Name == name).SingleAsync());
+            return Mapper.Map(await db.HardDrives.FindAsync(name));
         }
         public async Task<List<Inventory>> GetInventoryByCategory(string cat)
         {

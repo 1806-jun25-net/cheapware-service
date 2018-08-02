@@ -12,35 +12,35 @@ namespace Cheapware.Library.RepoClasses
         Task Save();
 
         //Computer Case Repo Methods
-        List<ComputerCase> GetComputerCases();
-        ComputerCase GetComputerCaseByName(string name);
+        Task<List<ComputerCase>> GetComputerCases();
+        Task<ComputerCase> GetComputerCaseByName(string name);
 
         //CPU Repo Methods
-        List<CPU> GetCpus();
-        CPU GetCpuByName(string name);
+        Task<List<CPU>> GetCpus();
+        Task<CPU> GetCpuByName(string name);
                 
         //Graphics Card Repo Methods
-        List<GraphicsCard> GetGraphicsCards();
-        GraphicsCard GetGraphicsCardByName(string name);
+        Task<List<GraphicsCard>> GetGraphicsCards();
+        Task<GraphicsCard> GetGraphicsCardByName(string name);
         
         //Mother Board Repo Methods
-        List<MotherBoard> GetMotherBoards();
-        MotherBoard GetMotherBoardByName(string name);
+        Task<List<MotherBoard>> GetMotherBoards();
+        Task<MotherBoard> GetMotherBoardByName(string name);
 
         //Power Supply Repo Methods
-        List<PowerSupply> GetPowerSupplys();
-        PowerSupply GetPowerSupplyByName(string name);
+        Task<List<PowerSupply>> GetPowerSupplys();
+        Task<PowerSupply> GetPowerSupplyByName(string name);
 
         //Ram Repo Methods
-        List<RAM> GetRams();
-        RAM GetRamByName(string name);
+        Task<List<RAM>> GetRams();
+        Task<RAM> GetRamByName(string name);
 
         //Customer Repo Methods
-        List<Customer> GetCustomers();
+        Task<List<Customer>> GetCustomers();
         void AddCustomer(Customer customer);
-        Customer GetCustomerById(int id);
-        Customer GetCustomerByName(string name);
-        Customer GetCustomerByUserName(string name);
+        Task<Customer> GetCustomerById(int id);
+        Task<Customer> GetCustomerByName(string name);
+        Task<Customer> GetCustomerByUserName(string name);
 
         //Hard Drive Repo Methods
         Task<List<HardDrive>> GetHardDrives();
