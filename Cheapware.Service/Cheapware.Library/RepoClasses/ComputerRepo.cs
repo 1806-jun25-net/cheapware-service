@@ -5,6 +5,8 @@ using System.Text;
 using Cheapware.Library.Models;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
+
 namespace Cheapware.Library.RepoClasses
 {
     public class ComputerRepo : IComputerRepo
@@ -15,12 +17,6 @@ namespace Cheapware.Library.RepoClasses
         {
             db = _db;
         } 
-
-        public Cart GetCartById(int id)
-        {
-
-            return Mapper.Map(db.Carts.Find(id));
-        }
         public List<ComputerCase> GetComputerCases()
         {
             return Mapper.Map(db.ComputerCases);
@@ -51,7 +47,7 @@ namespace Cheapware.Library.RepoClasses
             }
             return null;
         }
-        public async void Save()
+        public async Task Save()
         {
             await db.SaveChangesAsync();
         }
@@ -111,19 +107,14 @@ namespace Cheapware.Library.RepoClasses
             }
             return null;
         }
-        public List<Inventory> GetInventory()
+        public async Task<List<Inventory>> GetInventory()
         {
-            return Mapper.Map(db.Inventorys);
+            var inv = Mapper.Map(await db.Inventorys.ToListAsync());
+            return inv;
         }
-        public Inventory GetProductByName(string name)
+        public async Task<Inventory> GetProductByName(string name)
         {
-            var products = db.Inventorys;
-            foreach (var product in products)
-            {
-                if (product.Name == name)
-                    return Mapper.Map(product);
-            }
-            return null;
+            return Mapper.Map(await db.Inventorys.FindAsync(name));
         }
         public List<MotherBoard> GetMotherBoards()
         {
@@ -170,75 +161,55 @@ namespace Cheapware.Library.RepoClasses
             }
             return null;
         }
-        public List<HardDrive> GetHardDrives()
-        {
-            return Mapper.Map(db.HardDrives);
+        public async  Task<List<HardDrive>> GetHardDrives()
+        { 
+            return Mapper.Map(await db.HardDrives.ToListAsync());
         }
-        public HardDrive GetHardDriveByName(string name)
+        public async Task<HardDrive> GetHardDriveByName(string name)
         {
-            var hDrives = db.HardDrives;
-            foreach(var drive in hDrives)
-            {
-                if (drive.Name == name)
-                    return Mapper.Map(drive);
-            }
-            return null;
+            return Mapper.Map(await db.HardDrives.Where(x => x.Name == name).SingleAsync());
         }
-        public List<Inventory> GetInventoryByCategory(string cat)
+        public async Task<List<Inventory>> GetInventoryByCategory(string cat)
         {
-            var inventory = db.Inventorys;
-            List<Inventory> list = new List<Inventory>();
-            foreach(var item in inventory)
-            {
-                if (item.Category == cat)
-                    list.Add(Mapper.Map(item));
-            }
-            return list;
+            var getInventoryTasks = new List<Task<Inventory>>();
+
+            var orders = Mapper.Map(await db.Inventorys.Where(x => x.Category == cat).ToListAsync());
+
+            return orders;
         }
 
-        public List<PartsOrder> GetOrdersByCustomerId(int id)
+        public async Task<List<PartsOrder>> GetOrdersByCustomerId(int id)
         {
-            List<PartsOrder> list = new List<PartsOrder>();
-            var orders = db.PartsOrders;
-            foreach(var order in orders)
-            {
-                if (order.CustomerId == id)
-                    list.Add(Mapper.Map(order));
-            }
-            return list;
+            var getOrderTasks = new List<Task<PartsOrder>>();
+
+            var orders = Mapper.Map(await db.PartsOrders.Where(x => x.CustomerId == id).ToListAsync());
+
+            return orders;
         }
         public void AddOrder(PartsOrder order)
         {
             db.Add(Mapper.Map(order));
         }
-        public PartsOrder GetOrderById(int id)
+
+
+        public async Task<PartsOrder> GetOrderById(int id)
         {
-            var orders = db.PartsOrders;
-            foreach(var order in orders)
-            {
-                if (order.OrderId == id)
-                    return Mapper.Map(order);
-            }
-            return null;
+            var order = await db.PartsOrders.FindAsync(id);
+            return Mapper.Map(order);
         }
 
 
         public async Task<Cart> GetCartById(int id)
         {
-            var cart = db.Carts.FindAsync(id);
-            return await Mapper.Map(cart));
+            var cart = await db.Carts.FindAsync(id);
+            return Mapper.Map(cart);
         }
 
-        public async Task<Cart[]> GetCartByCustomerId(int id)
+        public async Task<List<Cart>> GetCartByCustomerId(int id)
         {
-            var getCartTasks = new List<Task<Cart>>();
+            var cart = Mapper.Map(await db.Carts.Where(x => x.CustomerId == id).ToListAsync());
 
-            var cart = Mapper.Map(from item in db.Carts where item.CustomerId == id select item);
-            foreach(var item in cart)
-            {
-                getCartTasks.Add(item);
-            }
-            return await Task.WhenAll(getCartTasks);
+            return cart;
         }
         public void AddCart(Cart cart)
         {
