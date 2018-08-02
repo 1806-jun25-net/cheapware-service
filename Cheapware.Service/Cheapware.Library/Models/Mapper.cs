@@ -215,6 +215,9 @@ namespace Cheapware.Library.Models
         };
 
 
+        public static List<Cart> Map(IEnumerable<data.Carts> cart) => cart.Select(Map).ToList();
+        public static List<data.Carts> Map(IEnumerable<Cart> cart) => cart.Select(Map).ToList();
+
         public static List<Customer> Map(IEnumerable<data.Customers> customers) => customers.Select(Map).ToList();
         public static List<data.Customers> Map(IEnumerable<Customer> customers) => customers.Select(Map).ToList();
 
