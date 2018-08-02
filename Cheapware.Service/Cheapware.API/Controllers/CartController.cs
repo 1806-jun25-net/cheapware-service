@@ -21,16 +21,16 @@ namespace CheapWare.API.Controllers
         }
 
         [HttpGet("{id}", Name = "GetCartByCustomerId")]
-        public ActionResult<List<Cart>> GetCartByCustomerId(int id)
+        public async Task<Cart[]> GetCartByCustomerId(int id)
         {
-            return repo.GetCartByCustomerId(id);
+            return await repo.GetCartByCustomerId(id);
         }
 
 
        [HttpGet("{cartId}", Name = "GetCartById")]
-       public ActionResult<Cart> GetCartById(int id)
+       public async Task<Cart> GetCartById(int id)
        {
-            return repo.GetCartById(id);
+            return await repo.GetCartById(id);
        }
         // POST: api/Orders
         [HttpPost]
