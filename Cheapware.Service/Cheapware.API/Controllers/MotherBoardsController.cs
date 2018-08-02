@@ -30,7 +30,7 @@ namespace CheapWare.API.Controllers
 
         // GET api/values/5
         [HttpGet("{name}", Name = "GetMotherBoardByName")]
-        public async Task<ActionResult<MotherBoard>> GetCPUsByName(string name)
+        public async Task<ActionResult<MotherBoard>> GetMotherBoardByName(string name)
         {
 
             return await repo.GetMotherBoardByName(name);
