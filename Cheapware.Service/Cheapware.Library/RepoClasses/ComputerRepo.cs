@@ -51,9 +51,9 @@ namespace Cheapware.Library.RepoClasses
             }
             return null;
         }
-        public void Save()
+        public async void Save()
         {
-            db.SaveChanges();
+            await db.SaveChangesAsync();
         }
 
         public Customer GetCustomerByUserName(string name)
@@ -222,16 +222,23 @@ namespace Cheapware.Library.RepoClasses
             return null;
         }
 
-        public List<Cart> GetCartByCustomerId(int id)
+
+        public async Task<Cart> GetCartById(int id)
         {
-            var carts = db.Carts;
-            List<Cart> list = new List<Cart>();
-            foreach(var cart in carts)
+            var cart = db.Carts.FindAsync(id);
+            return await Mapper.Map(cart));
+        }
+
+        public async Task<Cart[]> GetCartByCustomerId(int id)
+        {
+            var getCartTasks = new List<Task<Cart>>();
+
+            var cart = Mapper.Map(from item in db.Carts where item.CustomerId == id select item);
+            foreach(var item in cart)
             {
-                if (cart.CustomerId == id)
-                    list.Add(Mapper.Map(cart));
+                getCartTasks.Add(item);
             }
-            return list;
+            return await Task.WhenAll(getCartTasks);
         }
         public void AddCart(Cart cart)
         {
