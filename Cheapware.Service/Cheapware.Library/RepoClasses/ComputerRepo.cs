@@ -16,7 +16,11 @@ namespace Cheapware.Library.RepoClasses
             db = _db;
         } 
 
-        
+        public Cart GetCartById(int id)
+        {
+
+            return Mapper.Map(db.Carts.Find(id));
+        }
         public List<ComputerCase> GetComputerCases()
         {
             return Mapper.Map(db.ComputerCases);
@@ -228,6 +232,10 @@ namespace Cheapware.Library.RepoClasses
                     list.Add(Mapper.Map(cart));
             }
             return list;
+        }
+        public void AddCart(Cart cart)
+        {
+            db.Add(cart);
         }
     }
 }

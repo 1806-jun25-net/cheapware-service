@@ -8,6 +8,8 @@ using Cheapware.Library.RepoClasses;
 
 namespace CheapWare.API.Controllers
 {
+    [Route("api/Cart")]
+    [ApiController]
     public class CartController : Controller
     {
         private ComputerRepo repo { get; }
