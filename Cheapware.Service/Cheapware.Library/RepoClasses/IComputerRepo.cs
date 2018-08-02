@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 using Cheapware.Data.Models;
 using Cheapware.Library.Models;
 namespace Cheapware.Library.RepoClasses
@@ -33,9 +34,10 @@ namespace Cheapware.Library.RepoClasses
         List<PartsOrder> GetOrdersByCustomerId(int id);
         void AddOrder(PartsOrder order);
         PartsOrder GetOrderById(int id);
-        List<Cart> GetCartByCustomerId(int id);
+        Task<Cart[]> GetCartByCustomerId(int id);
         void AddCart(Cart cart);
-        Cart GetCartById(int id);
+        Task<Cart> GetCartById(int id);
+
 
 
     }
