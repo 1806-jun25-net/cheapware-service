@@ -7,6 +7,7 @@ namespace Cheapware.Data.Models
     {
         public Customers()
         {
+            Carts = new HashSet<Carts>();
             PartsOrders = new HashSet<PartsOrders>();
         }
 
@@ -15,6 +16,7 @@ namespace Cheapware.Data.Models
         public string CustomerName { get; set; }
         public string Address { get; set; }
 
+        public ICollection<Carts> Carts { get; set; }
         public ICollection<PartsOrders> PartsOrders { get; set; }
     }
 }

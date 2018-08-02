@@ -7,6 +7,7 @@ namespace Cheapware.Data.Models
     {
         public Inventorys()
         {
+            Carts = new HashSet<Carts>();
             ComputerCases = new HashSet<ComputerCases>();
             Cpus = new HashSet<Cpus>();
             GraphicsCards = new HashSet<GraphicsCards>();
@@ -23,6 +24,7 @@ namespace Cheapware.Data.Models
         public decimal Price { get; set; }
         public string Img { get; set; }
 
+        public ICollection<Carts> Carts { get; set; }
         public ICollection<ComputerCases> ComputerCases { get; set; }
         public ICollection<Cpus> Cpus { get; set; }
         public ICollection<GraphicsCards> GraphicsCards { get; set; }

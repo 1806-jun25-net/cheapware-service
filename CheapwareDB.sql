@@ -13,6 +13,14 @@ CREATE TABLE Cheap.Customers
 INSERT INTO Cheap.Customers
 VALUES('Joseph Isble', '73 Redemption Rock Trail')
 
+--DROP TABLE Cheap.Carts
+CREATE TABLE Cheap.Carts
+(
+	CartId INT IDENTITY NOT NULL,
+	ProductName NVARCHAR(128) NOT NULL,
+	CustomerId INT NOT NULL,
+);
+
 --DROP TABLE Cheap.Inventorys
 CREATE TABLE Cheap.Inventorys
 (
@@ -132,6 +140,9 @@ CREATE TABLE Cheap.PartsJunctions
 
 
 
+ALTER TABLE Cheap.Carts
+ADD CONSTRAINT PK_Carts_CartId PRIMARY KEY (CartId);
+
 ALTER TABLE Cheap.Customers
 ADD CONSTRAINT PK_Customers_CustomerID PRIMARY KEY (CustomerID);
 GO
@@ -179,7 +190,13 @@ GO
 
 
 
+ALTER TABLE Cheap.Carts
+ADD CONSTRAINT FK_Carts_ProductName FOREIGN KEY(ProductName) REFERENCES Cheap.Inventorys(Name)
+GO
 
+ALTER TABLE Cheap.Carts
+ADD CONSTRAINT FK_Carts_CustomerId FOREIGN KEY(CustomerID) REFERENCES Cheap.Customers(CustomerID)
+GO
 
 ALTER TABLE Cheap.PartsOrders
 ADD CONSTRAINT FK_PartsOrders_CustomerID FOREIGN KEY(CustomerID) REFERENCES Cheap.Customers(CustomerID)

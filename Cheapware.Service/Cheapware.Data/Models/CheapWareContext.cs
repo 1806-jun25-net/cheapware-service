@@ -15,6 +15,7 @@ namespace Cheapware.Data.Models
         {
         }
 
+        public virtual DbSet<Carts> Carts { get; set; }
         public virtual DbSet<ComputerCases> ComputerCases { get; set; }
         public virtual DbSet<Cpus> Cpus { get; set; }
         public virtual DbSet<Customers> Customers { get; set; }
@@ -36,6 +37,29 @@ namespace Cheapware.Data.Models
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<Carts>(entity =>
+            {
+                entity.HasKey(e => e.CartId);
+
+                entity.ToTable("Carts", "Cheap");
+
+                entity.Property(e => e.ProductName)
+                    .IsRequired()
+                    .HasMaxLength(128);
+
+                entity.HasOne(d => d.Customer)
+                    .WithMany(p => p.Carts)
+                    .HasForeignKey(d => d.CustomerId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_Carts_CustomerId");
+
+                entity.HasOne(d => d.ProductNameNavigation)
+                    .WithMany(p => p.Carts)
+                    .HasForeignKey(d => d.ProductName)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_Carts_ProductName");
+            });
+
             modelBuilder.Entity<ComputerCases>(entity =>
             {
                 entity.HasKey(e => e.ComputerCaseId);
