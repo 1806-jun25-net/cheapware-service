@@ -21,7 +21,7 @@ namespace CheapWare.API.Controllers
         }
 
         [HttpGet("{id}", Name = "GetCartByCustomerId")]
-        public async Task<List<Cart>> GetCartByCustomerId(int id)
+        public async Task<List<Inventory>> GetCartByCustomerId(int id)
         {
             return await repo.GetCartByCustomerId(id);
         }
