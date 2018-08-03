@@ -30,13 +30,45 @@ CREATE TABLE Cheap.Inventorys
 	Price MONEY NOT NULL,
 	Img NVARCHAR(128) NOT NULL
 );
+UPDATE Cheap.ComputerCases
+SET Name = 'Corsair Crystal Series RGB Steel Tempered Glass ATX Mid Tower Case'
+WHERE Name = 'Corsair Crystal Series RGB Steel / Tempered Glass ATX Mid Tower Case'
+
+UPDATE Cheap.Inventorys
+SET Name = 'Sapphire Radeon NITRO+ RX 580 8GB PCI-E Backplate SPECIAL EDITION'
+WHERE Name = 'Sapphire Radeon NITRO+ RX 580 8GB PCI-E w/ Backplate SPECIAL EDITION'
+
+DELETE FROM Cheap.GraphicsCards
+WHERE Name = 'Sapphire Radeon NITRO+ RX 580 8GB PCI-E w/ Backplate SPECIAL EDITION'
+
+
 
 INSERT INTO Cheap.Inventorys
-VALUES('Intel Core i9-7940X Skylake X 14-Core 3.1 GHz Desktop Processor', 50, 'CPU', 1149.99,'i9 Skylake X')
+VALUES('Intel Core i9-7940X Skylake X 14-Core 3.1 GHz Desktop Processor', 50, 'CPU', 1149.99,'cpu1.jpg')
 
 INSERT INTO Cheap.Inventorys
-VALUES('Intel Core i7-6900K 20M Broadwell-E 8-Core 3.2 GHz Desktop Processor', 20, 'CPU', 1402.99,'i7-6900k')
+VALUES('Intel Core i7-6900K 20M Broadwell-E 8-Core 3.2 GHz Desktop Processor', 20, 'CPU', 1402.99,'cpu2.jpg')
 
+INSERT INTO Cheap.Inventorys
+VALUES('Intel Core i5-8600K Coffee Lake 6-Core 3.6 GHz Desktop Processor', 30, 'CPU', 259.99, 'cpu3.jpg')
+
+INSERT INTO Cheap.Inventorys
+VALUES('Corsair Crystal Series RGB Steel Tempered Glass ATX Mid Tower Case', 15, 'Computercase', 170.99, 'computercase1.jpg')
+
+INSERT INTO Cheap.Inventorys
+VALUES('Thermaltake ATX Open Frame Panoramic Viewing Computer Case', 10, 'Computercase', 119.99, 'computercase2.jpg')
+
+INSERT INTO Cheap.Inventorys
+VALUES('Thermaltake View 4-Sided Tempered Glass Full Tower Computer Case', 35, 'Computercase', 184.99, 'computercase3.jpg')
+
+INSERT INTO Cheap.Inventorys
+VALUES('MSI B360 GAMING PLUS SATA 6Gbs USB 3.1 ATX Intel Motherboard', 40, 'Motherboard', 94.99, 'motherboards1.jpg')
+
+INSERT INTO Cheap.Inventorys
+VALUES('ASUS ROG Strix Z370-E Gaming SATA 6Gbs USB 3.1 ATX Intel Motherboard', 25, 'Motherboard', 197.99, 'motherboards2.jpg')
+
+INSERT INTO Cheap.Inventorys
+VALUES('MSI Z370 GAMING PRO CARBON SATA 6Gb/s USB 3.1 ATX Intel Motherboard', 20, 'Motherboard', 159.99, 'motherboards3.jpg')
 --DROP TABLE Cheap.CPUs
 CREATE TABLE Cheap.CPUs
 (
@@ -49,10 +81,14 @@ CREATE TABLE Cheap.CPUs
 );
 
 INSERT INTO Cheap.CPUs
-VALUES('Intel Core i9-7940X Skylake X 14-Core 3.1 GHz Desktop Processor', '3.1 GHz', 14, 1149.99,'i9 Skylake X')
+VALUES('Intel Core i9-7940X Skylake X 14-Core 3.1 GHz Desktop Processor', '3.1 GHz', 14, 1149.99,'cpu1.jpg')
 
 INSERT INTO Cheap.CPUs
-VALUES('Intel Core i7-6900K 20M Broadwell-E 8-Core 3.2 GHz Desktop Processor', '3.2 GHz', 8, 1402.99,'i7-6900k')
+VALUES('Intel Core i7-6900K 20M Broadwell-E 8-Core 3.2 GHz Desktop Processor', '3.2 GHz', 8, 1402.99,'cpu2.jpg')
+
+INSERT INTO Cheap.CPUs
+VALUES('Intel Core i5-8600K Coffee Lake 6-Core 3.6 GHz Desktop Processor', '3.6 Ghz', 6, 259.99, 'cpu3.jpg')
+
 
 --DROP TABLE Cheap.PowerSupplys
 CREATE TABLE Cheap.PowerSupplys
@@ -75,6 +111,8 @@ CREATE TABLE Cheap.GraphicsCards
 	Price MONEY NOT NULL,
 	Img NVARCHAR(128) NOT NULL
 );
+
+
 
 --DROP TABLE Cheap.HardDrives
 CREATE TABLE Cheap.HardDrives
@@ -100,6 +138,16 @@ CREATE TABLE Cheap.MotherBoards
 	Img NVARCHAR(128) NOT NULL
 )
 
+
+INSERT INTO Cheap.MotherBoards
+VALUES('MSI B360 GAMING PLUS SATA 6Gbs USB 3.1 ATX Intel Motherboard', 'ATX', 4, 6, 94.99, 'motherboards1.jpg')
+
+INSERT INTO Cheap.MotherBoards
+VALUES('ASUS ROG Strix Z370-E Gaming SATA 6Gbs USB 3.1 ATX Intel Motherboard', 'ATX', 4, 7, 197.99, 'motherboards2.jpg')
+
+INSERT INTO Cheap.MotherBoards
+VALUES('MSI Z370 GAMING PRO CARBON SATA 6Gbs USB 3.1 ATX Intel Motherboard', 'ATX', 4, 6, 159.99, 'motherboards3.jpg')
+
 --DROP TABLE Cheap.RAMs
 CREATE TABLE Cheap.RAMs
 (
@@ -120,6 +168,16 @@ CREATE TABLE Cheap.ComputerCases
 	Price MONEY NOT NULL,
 	Img NVARCHAR(128) NOT NULL
 )
+
+INSERT INTO Cheap.ComputerCases
+VALUES('Corsair Crystal Series RGB Steel Tempered Glass ATX Mid Tower Case', 'Mid Tower', 170.99, 'computercase1.jpg')
+
+INSERT INTO Cheap.ComputerCases
+VALUES('Thermaltake ATX Open Frame Panoramic Viewing Computer Case', 'Mid Tower', 119.99, 'computercase2.jpg')
+
+INSERT INTO Cheap.ComputerCases
+VALUES('Thermaltake View 4-Sided Tempered Glass Full Tower Computer Case', 'Full Tower', 184.99, 'computercase3.jpg')
+
 
 --DROP TABLE Cheap.PartsOrders
 CREATE TABLE Cheap.PartsOrders
