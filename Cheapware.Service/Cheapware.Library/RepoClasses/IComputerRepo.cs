@@ -60,7 +60,7 @@ namespace Cheapware.Library.RepoClasses
         Task<List<Cart>> GetCartByCustomerId(int id);
         void AddCart(Cart cart);
         Task<Cart> GetCartById(int id);
-        Task DeleteCartByCustomer(string userName);
+        Task DeleteCartByCustomer(int id);
 
 
 
