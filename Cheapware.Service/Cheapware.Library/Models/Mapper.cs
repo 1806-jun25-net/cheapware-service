@@ -64,7 +64,7 @@ namespace Cheapware.Library.Models
             Price = m.Price,
             Pcislots = m.Pcislots,
             Ramslots = m.Ramslots,
-            Img = m.Img
+            Image = m.Img
 
         };
         public static data.MotherBoards Map(MotherBoard m) => new data.MotherBoards
@@ -75,7 +75,7 @@ namespace Cheapware.Library.Models
             Price = m.Price,
             Pcislots = m.Pcislots,
             Ramslots = m.Ramslots,
-            Img = m.Img
+            Img = m.Image
         };
 
         public static ComputerCase Map(data.ComputerCases c) => new ComputerCase
