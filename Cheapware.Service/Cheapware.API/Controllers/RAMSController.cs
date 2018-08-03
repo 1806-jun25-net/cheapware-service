@@ -20,7 +20,7 @@ namespace CheapWare.API.Controllers
         }
         // GET api/values
         [HttpGet]
-        public async Task<ActionResult<List<RAM>>> GetRams()
+        public async Task<ActionResult<List<Ram>>> GetRams()
         {
 
             return await repo.GetRams();
@@ -28,7 +28,7 @@ namespace CheapWare.API.Controllers
 
         // GET api/values/5
         [HttpGet("{name}", Name = "GetRamByName")]
-        public async Task<ActionResult<RAM>> GetRamByName(string name)
+        public async Task<ActionResult<Ram>> GetRamByName(string name)
         {
 
             return await repo.GetRamByName(name);

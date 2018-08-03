@@ -105,7 +105,7 @@ namespace Cheapware.Service.Test
                  .UseInMemoryDatabase(databaseName: "GetRamsFromDatabase")
                  .Options;
             var ram = new Rams { Name = "test name", Speed = "2600Mhrtz", Size = "16GB", Price = 300.99M };
-            List<RAM> listoframs = null;
+            List<Ram> listoframs = null;
 
             using (var context = new CheapWareContext(options))
             {
@@ -134,7 +134,7 @@ namespace Cheapware.Service.Test
                 .UseInMemoryDatabase(databaseName: "GetCpusFromDatabase")
                 .Options;
             var cpu = new Cpus { Name = "test name", Speed = "3.6 Ghtz", Cores = 6, Price = 413.99M };
-            List<CPU> listofcpus = null;
+            List<Cpu> listofcpus = null;
 
             using (var context = new CheapWareContext(options))
             {
@@ -342,7 +342,7 @@ namespace Cheapware.Service.Test
             var ram1 = new Rams { Name = "test name1", Speed = "1700 Mghrtz", Size = "8GB", Price = 110.99M };
             var ram2 = new Rams { Name = "test name2", Speed = "1900 Mghrtz", Size = "16GB", Price = 150.99M };
 
-            RAM listoframs = null;
+            Ram listoframs = null;
 
             using (var context = new CheapWareContext(options))
             {
