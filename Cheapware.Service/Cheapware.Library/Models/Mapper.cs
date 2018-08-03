@@ -30,7 +30,7 @@ namespace Cheapware.Library.Models
             Quantity = i.Quantity,
             Price = i.Price,
             Category = i.Category,
-            Img = i.Img
+            Image = i.Img
         };
         public static data.Inventorys Map(Inventory i) => new data.Inventorys
         {
@@ -38,7 +38,7 @@ namespace Cheapware.Library.Models
             Quantity = i.Quantity,
             Price = i.Price,
             Category = i.Category,
-            Img = i.Img
+            Img = i.Image
         };
 
         public static PartsOrder Map(data.PartsOrders p) => new PartsOrder
