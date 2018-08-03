@@ -30,7 +30,7 @@ namespace Cheapware.Library.Models
             Quantity = i.Quantity,
             Price = i.Price,
             Category = i.Category,
-            Img = i.Img
+            Image = i.Img
         };
         public static data.Inventorys Map(Inventory i) => new data.Inventorys
         {
@@ -38,7 +38,7 @@ namespace Cheapware.Library.Models
             Quantity = i.Quantity,
             Price = i.Price,
             Category = i.Category,
-            Img = i.Img
+            Img = i.Image
         };
 
         public static PartsOrder Map(data.PartsOrders p) => new PartsOrder
@@ -64,7 +64,7 @@ namespace Cheapware.Library.Models
             Price = m.Price,
             Pcislots = m.Pcislots,
             Ramslots = m.Ramslots,
-            Img = m.Img
+            Image = m.Img
 
         };
         public static data.MotherBoards Map(MotherBoard m) => new data.MotherBoards
@@ -75,7 +75,7 @@ namespace Cheapware.Library.Models
             Price = m.Price,
             Pcislots = m.Pcislots,
             Ramslots = m.Ramslots,
-            Img = m.Img
+            Img = m.Image
         };
 
         public static ComputerCase Map(data.ComputerCases c) => new ComputerCase

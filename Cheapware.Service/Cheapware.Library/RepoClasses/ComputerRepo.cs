@@ -159,5 +159,9 @@ namespace Cheapware.Library.RepoClasses
         {
             db.Add(cart);
         }
+        public async Task DeleteCartByCustomer(int id)
+        {
+            db.Carts.RemoveRange(await db.Carts.Where(x => x.CustomerId == id).ToListAsync());
+        }
     }
 }

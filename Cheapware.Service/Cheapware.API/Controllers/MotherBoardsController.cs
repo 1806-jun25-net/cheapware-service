@@ -32,7 +32,6 @@ namespace CheapWare.API.Controllers
         [HttpGet("{name}", Name = "GetMotherBoardByName")]
         public async Task<ActionResult<MotherBoard>> GetMotherBoardByName(string name)
         {
-
             return await repo.GetMotherBoardByName(name);
         }
     }
