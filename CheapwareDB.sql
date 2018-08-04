@@ -319,4 +319,5 @@ SELECT * FROM Cheap.PartsOrders
 
 SELECT * FROM Cheap.PartsJunctions
 
+SELECT * FROM Cheap.Carts
 
