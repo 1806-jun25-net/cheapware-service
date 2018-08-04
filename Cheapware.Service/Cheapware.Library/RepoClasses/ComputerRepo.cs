@@ -145,16 +145,28 @@ namespace Cheapware.Library.RepoClasses
             var cart = await db.Carts.FindAsync(id);
             return Mapper.Map(cart);
         }
+        public async Task<List<Inventory>> GetInventoryByCart(List<string> items)
+        {
+            var list = new List<Inventory>();
+            foreach(var item in items)
+            {
+                list.Add(Mapper.Map(await db.Inventorys.FindAsync(item)));
+            }
+            return list;
 
+        }
         public async Task<List<Inventory>> GetCartByCustomerId(int id)
         {
-            
-            var cart = Mapper.Map(await db.Carts
-                .Include(x => x.ProductNameNavigation)
-                .Where(x => x.CustomerId == id)
-                .Select(x => x.ProductNameNavigation)
-                .ToListAsync());
-            return cart;
+
+            var cart = await db.Carts.Where(x => x.CustomerId == id).ToListAsync();
+            var list = new List<string>();
+            foreach(var item in cart)
+            {
+                list.Add(item.ProductName);
+            }
+            List<Inventory> items = await GetInventoryByCart(list);
+           
+            return items;
         }
         public void AddCart(Cart cart)
         {

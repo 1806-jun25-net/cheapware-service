@@ -20,7 +20,7 @@ namespace CheapWare.API.Controllers
             repo = _repo;
         }
 
-        [HttpGet("{id}", Name = "GetCartByCustomerId")]
+        [HttpGet("{customerId}", Name = "GetCartByCustomerId")]
         public async Task<ActionResult<List<Inventory>>> GetCartByCustomerId(int id)
         {
             return await repo.GetCartByCustomerId(id);
@@ -46,6 +46,7 @@ namespace CheapWare.API.Controllers
         public async Task Delete(int id)
         {
             await repo.DeleteCartByCustomer(id);
+            await repo.Save();
         }
 
         
