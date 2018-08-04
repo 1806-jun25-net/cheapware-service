@@ -162,7 +162,7 @@ namespace Cheapware.Library.RepoClasses
         }
         public void AddCart(Cart cart)
         {
-            db.Add(cart);
+            db.Carts.Add(Mapper.Map(cart));
         }
         public async Task DeleteCartByCustomer(int id)
         {

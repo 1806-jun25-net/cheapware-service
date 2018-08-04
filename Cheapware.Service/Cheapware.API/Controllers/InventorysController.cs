@@ -12,7 +12,7 @@ namespace CheapWare.API.Controllers
     [ApiController]
     public class InventorysController : ControllerBase
     {
-        // GET: api/GraphicsCards
+        // GET: api/GraphicsCardsC:\Revature\cheapware-service\Cheapware.Service\Cheapware.API\Controllers\InventorysController.cs
         private ComputerRepo repo { get; }
 
         public InventorysController(ComputerRepo _repo)
