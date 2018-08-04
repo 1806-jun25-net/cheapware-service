@@ -95,7 +95,7 @@ namespace Cheapware.Library.Models
             Img = c.Image
         };
 
-        public static CPU Map(data.Cpus c) => new CPU
+        public static Cpu Map(data.Cpus c) => new Cpu
         {
             CPUId = c.Cpuid,
             Name = c.Name,
@@ -105,7 +105,7 @@ namespace Cheapware.Library.Models
             Price = c.Price
 
         };
-        public static data.Cpus Map(CPU c) => new data.Cpus
+        public static data.Cpus Map(Cpu c) => new data.Cpus
         {
             Cpuid = c.CPUId,
             Name = c.Name,
@@ -116,7 +116,7 @@ namespace Cheapware.Library.Models
 
         };
 
-        public static RAM Map(data.Rams r) => new RAM
+        public static Ram Map(data.Rams r) => new Ram
         {
             RAMId = r.Ramid,
             Name = r.Name,
@@ -127,7 +127,7 @@ namespace Cheapware.Library.Models
 
 
         };
-        public static data.Rams Map(RAM r) => new data.Rams
+        public static data.Rams Map(Ram r) => new data.Rams
         {
             Ramid = r.RAMId,
             Name = r.Name,
@@ -227,11 +227,11 @@ namespace Cheapware.Library.Models
         public static List<PartsOrder> Map(IEnumerable<data.PartsOrders> orders) => orders.Select(Map).ToList();
         public static List<data.PartsOrders> Map(IEnumerable<PartsOrder> orders) => orders.Select(Map).ToList();
 
-        public static List<RAM> Map(IEnumerable<data.Rams> rams) => rams.Select(Map).ToList();
-        public static List<data.Rams> Map(IEnumerable<RAM> rams) => rams.Select(Map).ToList();
+        public static List<Ram> Map(IEnumerable<data.Rams> rams) => rams.Select(Map).ToList();
+        public static List<data.Rams> Map(IEnumerable<Ram> rams) => rams.Select(Map).ToList();
 
-        public static List<CPU> Map(IEnumerable<data.Cpus> cpus) => cpus.Select(Map).ToList();
-        public static List<data.Cpus> Map(IEnumerable<CPU> cpus) => cpus.Select(Map).ToList();
+        public static List<Cpu> Map(IEnumerable<data.Cpus> cpus) => cpus.Select(Map).ToList();
+        public static List<data.Cpus> Map(IEnumerable<Cpu> cpus) => cpus.Select(Map).ToList();
 
         public static List<MotherBoard> Map(IEnumerable<data.MotherBoards> mBoards) => mBoards.Select(Map).ToList();
         public static List<data.MotherBoards> Map(IEnumerable<MotherBoard> mBoards) => mBoards.Select(Map).ToList();

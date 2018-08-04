@@ -26,12 +26,12 @@ namespace Cheapware.Library.RepoClasses
         {
             return Mapper.Map(await db.ComputerCases.Where(x => x.Name == name).SingleAsync());
         }
-        public async Task<List<CPU>> GetCpus()
+        public async Task<List<Cpu>> GetCpus()
         {
             return Mapper.Map(await db.Cpus.ToListAsync());
         }
 
-        public async Task<CPU> GetCpuByName(string name)
+        public async Task<Cpu> GetCpuByName(string name)
         {
             return Mapper.Map(await db.Cpus.Where(x => x.Name == name).SingleAsync());
         }
@@ -98,11 +98,11 @@ namespace Cheapware.Library.RepoClasses
         {
             return Mapper.Map(await db.PowerSupplys.Where(x => x.Name == name).SingleAsync());
         }
-        public async Task<List<RAM>> GetRams()
+        public async Task<List<Ram>> GetRams()
         {
             return Mapper.Map(await db.Rams.ToListAsync());
         }
-        public async Task<RAM> GetRamByName(string name)
+        public async Task<Ram> GetRamByName(string name)
         {
             return Mapper.Map(await db.Rams.Where(x => x.Name ==name).SingleAsync());
         }
@@ -116,8 +116,6 @@ namespace Cheapware.Library.RepoClasses
         }
         public async Task<List<Inventory>> GetInventoryByCategory(string cat)
         {
-            var getInventoryTasks = new List<Task<Inventory>>();
-
             var orders = Mapper.Map(await db.Inventorys.Where(x => x.Category == cat).ToListAsync());
 
             return orders;
@@ -125,8 +123,6 @@ namespace Cheapware.Library.RepoClasses
 
         public async Task<List<PartsOrder>> GetOrdersByCustomerId(int id)
         {
-            var getOrderTasks = new List<Task<PartsOrder>>();
-
             var orders = Mapper.Map(await db.PartsOrders.Where(x => x.CustomerId == id).ToListAsync());
 
             return orders;

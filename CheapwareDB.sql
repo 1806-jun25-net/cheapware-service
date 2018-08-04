@@ -35,11 +35,11 @@ SET Name = 'Corsair Crystal Series RGB Steel Tempered Glass ATX Mid Tower Case'
 WHERE Name = 'Corsair Crystal Series RGB Steel / Tempered Glass ATX Mid Tower Case'
 
 UPDATE Cheap.Inventorys
-SET Name = 'Sapphire Radeon NITRO+ RX 580 8GB PCI-E Backplate SPECIAL EDITION'
-WHERE Name = 'Sapphire Radeon NITRO+ RX 580 8GB PCI-E w/ Backplate SPECIAL EDITION'
+SET Img = 'motherboard3.jpg'
+WHERE Img = 'motherboards3.jpg'
 
-DELETE FROM Cheap.GraphicsCards
-WHERE Name = 'Sapphire Radeon NITRO+ RX 580 8GB PCI-E w/ Backplate SPECIAL EDITION'
+DELETE FROM Cheap.MotherBoards
+WHERE Img = 'motherboards3.jpg'
 
 
 
@@ -140,13 +140,13 @@ CREATE TABLE Cheap.MotherBoards
 
 
 INSERT INTO Cheap.MotherBoards
-VALUES('MSI B360 GAMING PLUS SATA 6Gbs USB 3.1 ATX Intel Motherboard', 'ATX', 4, 6, 94.99, 'motherboards1.jpg')
+VALUES('MSI B360 GAMING PLUS SATA 6Gbs USB 3.1 ATX Intel Motherboard', 'ATX', 4, 6, 94.99, 'motherboard1.jpg')
 
 INSERT INTO Cheap.MotherBoards
-VALUES('ASUS ROG Strix Z370-E Gaming SATA 6Gbs USB 3.1 ATX Intel Motherboard', 'ATX', 4, 7, 197.99, 'motherboards2.jpg')
+VALUES('ASUS ROG Strix Z370-E Gaming SATA 6Gbs USB 3.1 ATX Intel Motherboard', 'ATX', 4, 7, 197.99, 'motherboard2.jpg')
 
 INSERT INTO Cheap.MotherBoards
-VALUES('MSI Z370 GAMING PRO CARBON SATA 6Gbs USB 3.1 ATX Intel Motherboard', 'ATX', 4, 6, 159.99, 'motherboards3.jpg')
+VALUES('MSI Z370 GAMING PRO CARBON SATA 6Gbs USB 3.1 ATX Intel Motherboard', 'ATX', 4, 6, 159.99, 'motherboard3.jpg')
 
 --DROP TABLE Cheap.RAMs
 CREATE TABLE Cheap.RAMs

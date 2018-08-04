@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Cheapware.Library.Models
 {
-    public class CPU
+    public class Cpu
     {
 		public int CPUId { get; set; }
 		public string Name { get; set; }

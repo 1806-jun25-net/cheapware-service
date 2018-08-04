@@ -16,8 +16,8 @@ namespace Cheapware.Library.RepoClasses
         Task<ComputerCase> GetComputerCaseByName(string name);
 
         //CPU Repo Methods
-        Task<List<CPU>> GetCpus();
-        Task<CPU> GetCpuByName(string name);
+        Task<List<Cpu>> GetCpus();
+        Task<Cpu> GetCpuByName(string name);
                 
         //Graphics Card Repo Methods
         Task<List<GraphicsCard>> GetGraphicsCards();
@@ -32,8 +32,8 @@ namespace Cheapware.Library.RepoClasses
         Task<PowerSupply> GetPowerSupplyByName(string name);
 
         //Ram Repo Methods
-        Task<List<RAM>> GetRams();
-        Task<RAM> GetRamByName(string name);
+        Task<List<Ram>> GetRams();
+        Task<Ram> GetRamByName(string name);
 
         //Customer Repo Methods
         Task<List<Customer>> GetCustomers();

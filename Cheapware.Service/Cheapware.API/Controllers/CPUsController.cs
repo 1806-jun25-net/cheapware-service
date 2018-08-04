@@ -21,7 +21,7 @@ namespace CheapWare.API.Controllers
         }
         // GET api/values
         [HttpGet]
-        public async Task<ActionResult<List<CPU>>> GetCpus()
+        public async Task<ActionResult<List<Cpu>>> GetCpus()
         {
 
             return await repo.GetCpus();
@@ -29,7 +29,7 @@ namespace CheapWare.API.Controllers
 
         // GET api/values/5
         [HttpGet("{name}", Name = "GetCPUsByName")]
-        public async Task<ActionResult<CPU>> GetCPUsByName(string name)
+        public async Task<ActionResult<Cpu>> GetCPUsByName(string name)
         {
 
             return await repo.GetCpuByName(name);

@@ -28,12 +28,6 @@ namespace Cheapware.Data.Models
         public virtual DbSet<PowerSupplys> PowerSupplys { get; set; }
         public virtual DbSet<Rams> Rams { get; set; }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            if (!optionsBuilder.IsConfigured)
-            {
-            }
-        }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
