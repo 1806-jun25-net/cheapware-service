@@ -48,7 +48,6 @@ namespace CheapWare.API.Controllers
             await repo.DeleteCartByCustomer(id);
             await repo.Save();
         }
-
         
     }
 }

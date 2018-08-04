@@ -23,7 +23,7 @@ namespace Cheapware.Service.Test
                  .UseInMemoryDatabase(databaseName: "AddCustomersFromDatabase")
                  .Options;
 
-           
+
             using (var context = new CheapWareContext(options))
             {
                 var service = new ComputerRepo(context);
@@ -31,7 +31,7 @@ namespace Cheapware.Service.Test
                 await service.Save();
             }
 
-           
+
             using (var context = new CheapWareContext(options))
             {
                 Assert.Equal(1, context.Customers.Count());
@@ -48,7 +48,7 @@ namespace Cheapware.Service.Test
                 .Options;
             var customer = new Customers { CustomerName = "test name", Address = "test address", UserName = "test username" };
             List<Customer> listofcustomers = null;
-           
+
             using (var context = new CheapWareContext(options))
             {
                 context.Add(customer);
@@ -61,7 +61,7 @@ namespace Cheapware.Service.Test
                 listofcustomers = await service.GetCustomers();
             }
 
-    
+
             using (var context = new CheapWareContext(options))
             {
                 Assert.Single(listofcustomers);
@@ -75,7 +75,7 @@ namespace Cheapware.Service.Test
             var options = new DbContextOptionsBuilder<CheapWareContext>()
                 .UseInMemoryDatabase(databaseName: "GetCustomersFromDatabase")
                 .Options;
-            var inventory = new Inventorys { Name = "test product", Quantity = 30, Category = "CPUs",Price = 139.99M };
+            var inventory = new Inventorys { Name = "test product", Quantity = 30, Category = "CPUs", Price = 139.99M };
             List<Inventory> listofinventorys = null;
 
             using (var context = new CheapWareContext(options))
@@ -162,7 +162,7 @@ namespace Cheapware.Service.Test
             var options = new DbContextOptionsBuilder<CheapWareContext>()
                 .UseInMemoryDatabase(databaseName: "GetGraphicscardsFromDatabase")
                 .Options;
-            var graphicscard = new GraphicsCards { Name = "test name", Speed = "1700 Mghz", Size = "8GB", Price = 300.99M};
+            var graphicscard = new GraphicsCards { Name = "test name", Speed = "1700 Mghz", Size = "8GB", Price = 300.99M };
             List<GraphicsCard> listofgraphicscards = null;
 
             using (var context = new CheapWareContext(options))
@@ -191,7 +191,7 @@ namespace Cheapware.Service.Test
             var options = new DbContextOptionsBuilder<CheapWareContext>()
                 .UseInMemoryDatabase(databaseName: "GetHardDrivesFromDatabase")
                 .Options;
-            var harddrive = new HardDrives { Name = "test name", Category = "SSD", Size = "500GB", Speed = "7200RPM", Price = 100.99M};
+            var harddrive = new HardDrives { Name = "test name", Category = "SSD", Size = "500GB", Speed = "7200RPM", Price = 100.99M };
             List<HardDrive> listofharddrives = null;
 
             using (var context = new CheapWareContext(options))
@@ -337,12 +337,12 @@ namespace Cheapware.Service.Test
         public async void GetRamByNameTest()
         {
             var options = new DbContextOptionsBuilder<CheapWareContext>()
-                .UseInMemoryDatabase(databaseName: "GetInventoryByCategoryDatabase")
+                .UseInMemoryDatabase(databaseName: "GetRamByNameDatabase")
                 .Options;
             var ram1 = new Rams { Name = "test name1", Speed = "1700 Mghrtz", Size = "8GB", Price = 110.99M };
             var ram2 = new Rams { Name = "test name2", Speed = "1900 Mghrtz", Size = "16GB", Price = 150.99M };
 
-            Ram listoframs = null;
+            Ram ram = null;
 
             using (var context = new CheapWareContext(options))
             {
@@ -354,15 +354,79 @@ namespace Cheapware.Service.Test
             using (var context = new CheapWareContext(options))
             {
                 var service = new ComputerRepo(context);
-                listoframs = await service.GetRamByName("test name1");
+                ram = await service.GetRamByName("test name1");
             }
 
             using (var context = new CheapWareContext(options))
             {
-           
-                Assert.Equal("1700 Mghrtz", listoframs.Speed);
-                Assert.Equal("8GB", listoframs.Size);
-                Assert.Equal(110.99M, listoframs.Price);
+
+                Assert.Equal("1700 Mghrtz", ram.Speed);
+                Assert.Equal("8GB", ram.Size);
+                Assert.Equal(110.99M, ram.Price);
+            }
+        }
+
+        [Fact]
+        public async void GetComputerCaseByNameTest()
+        {
+            var options = new DbContextOptionsBuilder<CheapWareContext>()
+                .UseInMemoryDatabase(databaseName: "GetComputerCaseByNameDatabase")
+                .Options;
+            var computercase1 = new ComputerCases { Name = "test name1", Size = "Mid Tower", Price = 90.99M };
+            var computercase2 = new ComputerCases { Name = "test name2", Size = "Full Tower", Price = 105.99M };
+
+            ComputerCase computercase = null;
+
+            using (var context = new CheapWareContext(options))
+            {
+                context.Add(computercase1);
+                context.Add(computercase2);
+                context.SaveChanges();
+            }
+
+            using (var context = new CheapWareContext(options))
+            {
+                var service = new ComputerRepo(context);
+                computercase = await service.GetComputerCaseByName("test name1");
+            }
+
+            using (var context = new CheapWareContext(options))
+            {  
+                Assert.Equal("Mid Tower", computercase.Size);
+                Assert.Equal(90.99M, computercase.Price);
+            }
+        }
+
+        [Fact]
+        public async void GetCpusByNameTest()
+        {
+            var options = new DbContextOptionsBuilder<CheapWareContext>()
+                .UseInMemoryDatabase(databaseName: "GetComputerCaseByNameDatabase")
+                .Options;
+            var cpu1 = new Cpus { Name = "test name1", Cores = 4, Speed = "3.4Ghz", Price = 90.99M };
+            var cpu2 = new Cpus { Name = "test name2", Cores = 4, Speed = "3.6Ghz", Price = 100.99M };
+
+
+            Cpu cpu = null;
+
+            using (var context = new CheapWareContext(options))
+            {
+                context.Add(cpu1);
+                context.Add(cpu2);
+                context.SaveChanges();
+            }
+
+            using (var context = new CheapWareContext(options))
+            {
+                var service = new ComputerRepo(context);
+                cpu = await service.GetCpuByName("test name1");
+            }
+
+            using (var context = new CheapWareContext(options))
+            {
+                Assert.Equal(4, cpu.Cores);
+                Assert.Equal("3.4Ghz", cpu.Speed);
+                Assert.Equal(90.99M, cpu.Price);
             }
         }
     }
