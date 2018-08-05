@@ -29,13 +29,14 @@ namespace CheapWare.API.Controllers
 
 
         [HttpGet]
-        [Route("cartById/{cartId}")]
+        [Route("cartById/{cartId}", Name = "GetCartById")]
         public async Task<ActionResult<Cart>> GetCartById(int cartId)
        {
             return await repo.GetCartById(cartId);
        }
         // POST: api/Orders
         [HttpPost]
+        [Route("AddToCart")]
         public async Task<ActionResult> AddToCart(Cart cart)
         {
             repo.AddCart(cart);

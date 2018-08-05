@@ -9,11 +9,11 @@ using Cheapware.Library.Models;
 
 namespace CheapWare.API.Controllers
 {
-    [Route("api/Customers")]
+    [Route("api/Customers/")]
     [ApiController]
     public class CustomersController : ControllerBase
     {
-        private ComputerRepo repo { get; }                                                                             
+        private ComputerRepo repo { get; }
 
         public CustomersController(ComputerRepo _repo)
         {
@@ -22,13 +22,21 @@ namespace CheapWare.API.Controllers
 
         // GET: api/Customers
         [HttpGet]
+        [Route("GetAll", Name = "GetAll")]
         public async Task<ActionResult<IEnumerable<Customer>>> GetCustomers()
         {
             return await repo.GetCustomers();
         }
 
-   
-        [HttpGet("{UserName}", Name = "GetCustomerByUserName")]
+        [HttpGet]
+        [Route("GetCustomerById/{id}", Name = "GetCustomerById")]
+        public async Task<ActionResult<Customer>> GetCustomerById(int id)
+        {
+            return await repo.GetCustomerById(id);
+        }
+
+        [HttpGet]
+        [Route("GetCustomerByUserName/{UserName}")]
         public async Task<ActionResult<Customer>> GetCustomerByUserName(string UserName)
         {
 
@@ -42,7 +50,7 @@ namespace CheapWare.API.Controllers
             repo.AddCustomer(customer);
             await repo.Save();
 
-            return CreatedAtRoute("GetCustomersById", new { id = customer.CustomerId }, customer);
+            return CreatedAtRoute("GetCustomerById", new { id = customer.CustomerId }, customer);
         }
 
         
