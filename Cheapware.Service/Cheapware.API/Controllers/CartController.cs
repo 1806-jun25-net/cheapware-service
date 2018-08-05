@@ -36,7 +36,7 @@ namespace CheapWare.API.Controllers
        }
         // POST: api/Orders
         [HttpPost]
-        [Route("AddToCart")]
+        [Route("AddCart")]
         public async Task<ActionResult> AddToCart(Cart cart)
         {
             repo.AddCart(cart);
