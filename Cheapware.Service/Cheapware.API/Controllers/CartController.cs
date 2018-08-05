@@ -8,7 +8,7 @@ using Cheapware.Library.RepoClasses;
 
 namespace CheapWare.API.Controllers
 {
-    [Route("api/Cart")]
+    [Route("api/Cart/")]
     [ApiController]
     public class CartController : Controller
     {
@@ -20,17 +20,19 @@ namespace CheapWare.API.Controllers
             repo = _repo;
         }
 
-        [HttpGet("{customerId}", Name = "GetCartByCustomerId")]
-        public async Task<ActionResult<List<Inventory>>> GetCartByCustomerId(int id)
+        [HttpGet]
+        [Route("cartByCustomer/{customerId}")]
+        public async Task<ActionResult<List<Inventory>>> GetCartByCustomerId(int customerId)
         {
-            return await repo.GetCartByCustomerId(id);
+            return await repo.GetCartByCustomerId(customerId);
         }
 
 
-       [HttpGet("{cartId}", Name = "GetCartById")]
-       public async Task<ActionResult<Cart>> GetCartById(int id)
+        [HttpGet]
+        [Route("cartById/{cartId}")]
+        public async Task<ActionResult<Cart>> GetCartById(int cartId)
        {
-            return await repo.GetCartById(id);
+            return await repo.GetCartById(cartId);
        }
         // POST: api/Orders
         [HttpPost]
