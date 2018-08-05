@@ -20,13 +20,14 @@ namespace CheapWare.API.Controllers
             repo = _repo;
         }
 
+        //[Route("api/Cart/customerId/{customerId}")]
         [HttpGet("{customerId}", Name = "GetCartByCustomerId")]
         public async Task<ActionResult<List<Inventory>>> GetCartByCustomerId(int id)
         {
             return await repo.GetCartByCustomerId(id);
         }
 
-
+       //[Route("api/Cart/cartId/{cartId}")]
        [HttpGet("{cartId}", Name = "GetCartById")]
        public async Task<ActionResult<Cart>> GetCartById(int id)
        {
