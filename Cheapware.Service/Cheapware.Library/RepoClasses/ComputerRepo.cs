@@ -56,7 +56,12 @@ namespace Cheapware.Library.RepoClasses
         {
             return Mapper.Map(await db.Customers.FindAsync(id));
         }
-            
+        
+        public async Task<int> GetCustomerIdByUserName(string userName)
+        {
+            var cust = await db.Customers.Where(x => x.UserName == userName).SingleAsync();
+            return cust.CustomerId;
+        }
             
            
         public async Task<Customer> GetCustomerByName(string name)
