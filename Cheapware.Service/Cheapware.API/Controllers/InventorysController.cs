@@ -8,7 +8,7 @@ using Cheapware.Library.RepoClasses;
 using Cheapware.Library.Models;
 namespace CheapWare.API.Controllers
 {
-    [Route("api/Inventorys")]
+    [Route("api/Inventorys/")]
     [ApiController]
     public class InventorysController : ControllerBase
     {
@@ -32,6 +32,13 @@ namespace CheapWare.API.Controllers
         public async Task<ActionResult<List<Inventory>>> GetInventoryByCategory(string cat)
         {
             return await repo.GetInventoryByCategory(cat);
+        }
+
+        [HttpGet]
+        [Route("Search", Name = "GetInventoryBySearch")]
+        public async Task<ActionResult<List<Inventory>>> GetInventoryBySearch([FromQuery]string search = null)
+        {
+            return await repo.GetInventoryBySearch(search);
         }
     }
 }
