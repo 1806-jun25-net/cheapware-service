@@ -210,7 +210,7 @@ namespace Cheapware.Library.Models
 
         public static data.Carts Map(Cart cart) => new data.Carts
         {
-            CartId =cart.CartId,
+            //CartId = cart.CartId,
             CustomerId = cart.CustomerId,
             ProductName = cart.ProductId
         };

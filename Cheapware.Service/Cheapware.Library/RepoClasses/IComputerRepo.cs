@@ -41,7 +41,7 @@ namespace Cheapware.Library.RepoClasses
         Task<Customer> GetCustomerById(int id);
         Task<Customer> GetCustomerByName(string name);
         Task<Customer> GetCustomerByUserName(string name);
-        Task<int> GetCustomerIdByUserName(string userName);
+        //Task<int> GetCustomerIdByUserName(string userName);
 
         //Hard Drive Repo Methods
         Task<List<HardDrive>> GetHardDrives();

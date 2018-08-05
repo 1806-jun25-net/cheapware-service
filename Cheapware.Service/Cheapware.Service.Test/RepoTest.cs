@@ -429,5 +429,38 @@ namespace Cheapware.Service.Test
                 Assert.Equal(90.99M, cpu.Price);
             }
         }
+
+        [Fact]
+        public async void GetCustomerByUserNameTest()
+        {
+            var options = new DbContextOptionsBuilder<CheapWareContext>()
+                .UseInMemoryDatabase(databaseName: "GetComputerCaseByNameDatabase")
+                .Options;
+            var Cust1 = new Customers { CustomerName = "test name1", Address = "Test address1", UserName = "testusername1" };
+            var Cust2 = new Customers { CustomerName = "test name2", Address = "Test address2", UserName = "testusername2" };
+
+
+            Customer cust = null;
+
+            using (var context = new CheapWareContext(options))
+            {
+                context.Add(Cust1);
+                context.Add(Cust2);
+                context.SaveChanges();
+            }
+
+            using (var context = new CheapWareContext(options))
+            {
+                var service = new ComputerRepo(context);
+                cust = await service.GetCustomerByUserName("testusername1");
+            }
+
+            using (var context = new CheapWareContext(options))
+            {
+                Assert.Equal("test name1", cust.CustomerName);
+                Assert.Equal("Test address1", cust.Address);
+               
+            }
+        }
     }
 }
