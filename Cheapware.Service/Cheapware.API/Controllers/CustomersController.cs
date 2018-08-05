@@ -28,14 +28,25 @@ namespace CheapWare.API.Controllers
         }
 
         // GET: api/Customers/5
+<<<<<<< HEAD
         
         
         [HttpGet("{userName}", Name = "GetCustomerIdByUserName")]
         public async Task<ActionResult<int>> GetCustomerIdByUserName(string username)
+=======
+        [HttpGet("{customerId}", Name = "GetCustomerById")]
+        public async Task<ActionResult<Customer>> GetCustomerById(int id)
+        {
+            return await repo.GetCustomerById(id);
+        }
+
+        [HttpGet("{userName}", Name = "GetCustomerIdByUserName")]
+        public async Task<ActionResult<Customer>> GetCustomerIdByUserName(string userName)
+>>>>>>> 91bb76f3e893a2a54e3c08531f3fba83646cb845
         {
             var user = await repo.GetCustomerByUserName(username);
 
-            return user.CustomerId;
+            return user;
         }
         [HttpGet("{customerId}", Name = "GetCustomerById")]
         public async Task<ActionResult<Customer>> GetCustomerById(int id)
