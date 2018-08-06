@@ -6,10 +6,13 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Cheapware.Library.Models;
 using Cheapware.Library.RepoClasses;
+using Microsoft.AspNetCore.Authorization;
+
 namespace CheapWare.API.Controllers
 {
     [Route("api/HardDrives")]
     [ApiController]
+    [Authorize]
     public class HardDrivesController : ControllerBase
     {
         // GET: api/HardDrives

@@ -50,14 +50,14 @@ namespace CheapWare.API.Controllers
         [ProducesResponseType(400)]
         public async Task<ActionResult> Register(User input,
             [FromServices] UserManager<IdentityUser> userManager,
-            [FromServices] RoleManager<IdentityRole> roleManager, bool admin = false)
+            [FromServices] RoleManager<IdentityRole> roleManager, bool admin = false, bool user = true)
         {
             // with an [ApiController], model state is always automatically checked
             // and return 400 if any errors.
 
-            var user = new IdentityUser(input.Username);
+            var newuser = new IdentityUser(input.Username);
 
-            var result = await userManager.CreateAsync(user, input.Password);
+            var result = await userManager.CreateAsync(newuser, input.Password);
 
             if (!result.Succeeded)
             {
@@ -75,14 +75,33 @@ namespace CheapWare.API.Controllers
                         return StatusCode(500, result);
                     }
                 }
-                result = await userManager.AddToRoleAsync(user, "admin");
+                result = await userManager.AddToRoleAsync(newuser, "admin");
                 if (!result.Succeeded)
                 {
                     return StatusCode(500, result);
                 }
             }
 
-            await _signInManager.SignInAsync(user, isPersistent: false);
+            if (user)
+            {
+                if (!(await roleManager.RoleExistsAsync("user")))
+                {
+                    var userRole = new IdentityRole("user");
+                    result = await roleManager.CreateAsync(userRole);
+                    if (!result.Succeeded)
+                    {
+                        return StatusCode(500, result);
+                    }
+                }
+                result = await userManager.AddToRoleAsync(newuser, "user");
+                if (!result.Succeeded)
+                {
+                    return StatusCode(500, result);
+                }
+            }
+
+
+            await _signInManager.SignInAsync(newuser, isPersistent: false);
 
             return NoContent();
         }

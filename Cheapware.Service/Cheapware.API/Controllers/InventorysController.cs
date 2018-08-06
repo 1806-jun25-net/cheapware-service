@@ -6,10 +6,13 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Cheapware.Library.RepoClasses;
 using Cheapware.Library.Models;
+using Microsoft.AspNetCore.Authorization;
+
 namespace CheapWare.API.Controllers
 {
     [Route("api/Inventorys/")]
     [ApiController]
+    [Authorize]
     public class InventorysController : ControllerBase
     {
         // GET: api/GraphicsCardsC:\Revature\cheapware-service\Cheapware.Service\Cheapware.API\Controllers\InventorysController.cs

@@ -6,10 +6,13 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Cheapware.Library.RepoClasses;
 using Cheapware.Library.Models;
+using Microsoft.AspNetCore.Authorization;
+
 namespace CheapWare.API.Controllers
 {
     [Route("api/GraphicsCards")]
     [ApiController]
+    [Authorize]
     public class GraphicsCardsController : ControllerBase
     {
         // GET: api/GraphicsCards
