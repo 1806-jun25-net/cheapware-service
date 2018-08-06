@@ -12,7 +12,7 @@ namespace CheapWare.API.Controllers
 {
     [Route("api/Inventorys/")]
     [ApiController]
-    [Authorize]
+   // [Authorize]
     public class InventorysController : ControllerBase
     {
         // GET: api/GraphicsCardsC:\Revature\cheapware-service\Cheapware.Service\Cheapware.API\Controllers\InventorysController.cs
