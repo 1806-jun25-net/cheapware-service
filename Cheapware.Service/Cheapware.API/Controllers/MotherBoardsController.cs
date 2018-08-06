@@ -12,7 +12,7 @@ namespace CheapWare.API.Controllers
 {
     [Route("api/MotherBoards")]
     [ApiController]
-    //[Authorize]
+    [Authorize]
     public class MotherBoardsController : ControllerBase
     {
         // GET api/values
