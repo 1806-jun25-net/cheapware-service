@@ -12,6 +12,6 @@ namespace Cheapware.Library.Models
         public string Size { get; set; }
         public string Category { get; set; }
         public decimal Price { get; set; }
-        public string Img { get; set; }
+        public string Image { get; set; }
     }
 }

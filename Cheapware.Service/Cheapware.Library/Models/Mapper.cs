@@ -165,18 +165,20 @@ namespace Cheapware.Library.Models
             HardDriveId = h.HardDriveId,
             Name = h.Name,
             Speed = h.Speed,
+            Size = h.Size,
             Category = h.Category,
             Price = h.Price,
-            Img = h.Img
+            Image = h.Img
         };
         public static data.HardDrives Map(HardDrive h) => new data.HardDrives
         {
             HardDriveId = h.HardDriveId,
             Name = h.Name,
             Speed = h.Speed,
+            Size = h.Size,
             Category = h.Category,
             Price = h.Price,
-            Img = h.Img
+            Img = h.Image
         };
 
         public static PowerSupply Map(data.PowerSupplys p) => new PowerSupply
