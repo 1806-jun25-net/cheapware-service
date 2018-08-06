@@ -5,11 +5,13 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Cheapware.Library.Models;
 using Cheapware.Library.RepoClasses;
+using Microsoft.AspNetCore.Authorization;
 
 namespace CheapWare.API.Controllers
 {
     [Route("api/Cart/")]
     [ApiController]
+    [Authorize]
     public class CartController : Controller
     {
         private ComputerRepo repo { get; }

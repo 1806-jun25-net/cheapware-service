@@ -7,10 +7,13 @@ using Microsoft.AspNetCore.Mvc;
 using Cheapware.Library.Models;
 using Cheapware.Data.Models;
 using Cheapware.Library.RepoClasses;
+using Microsoft.AspNetCore.Authorization;
+
 namespace CheapWare.API.Controllers
 {
     [Route("api/CPUs")]
     [ApiController]
+    [Authorize]
     public class CPUsController : ControllerBase
     {
         private ComputerRepo repo { get; }

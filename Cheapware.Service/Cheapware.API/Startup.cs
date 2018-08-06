@@ -82,10 +82,12 @@ namespace Cheapware.API
 
             services.AddAuthentication();
 
+            services.AddCors();
+
             services.AddMvc()
                 .AddXmlSerializerFormatters()
                 .SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
-
+            
 
             services.AddSwaggerGen(c =>
             {
@@ -102,6 +104,12 @@ namespace Cheapware.API
             }
 
             app.UseAuthentication();
+
+            app.UseCors(builder => builder
+               .AllowAnyHeader()
+               .AllowAnyMethod()
+               .AllowAnyOrigin() // could put just angular url here
+               .AllowCredentials());
 
             app.UseSwagger();
 
