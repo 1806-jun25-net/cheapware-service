@@ -193,5 +193,14 @@ namespace Cheapware.Library.RepoClasses
             return Mapper.Map(await db.Inventorys.Where(x => x.Name.Contains(search)).ToListAsync());
             
         }
+
+        public async Task DeleteByCartId(int cartId)
+        {
+            db.Carts.Remove(await db.Carts.FindAsync(cartId));
+        }
+        public async Task<List<Cart>> CartIdsByCustomer(int id)
+        {
+            return Mapper.Map(await db.Carts.Where(x => x.CustomerId == id).ToListAsync());
+        }
     }
 }
