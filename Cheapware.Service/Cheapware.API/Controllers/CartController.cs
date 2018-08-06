@@ -54,7 +54,7 @@ namespace CheapWare.API.Controllers
             return CreatedAtRoute("GetCartById", new { cartId = cart.CartId }, cart);
         }
         [HttpDelete]
-        [Route("DeleteByCartId/")]
+        [Route("DeleteByCartId/{cartId}", Name ="DeleteByCartId")]
         public async Task DeleteByCartId(int cartId)
         {
             await repo.DeleteByCartId(cartId);
