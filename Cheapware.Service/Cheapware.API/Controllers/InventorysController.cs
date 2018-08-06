@@ -18,6 +18,8 @@ namespace CheapWare.API.Controllers
         // GET: api/GraphicsCardsC:\Revature\cheapware-service\Cheapware.Service\Cheapware.API\Controllers\InventorysController.cs
         private ComputerRepo repo { get; }
 
+
+
         public InventorysController(ComputerRepo _repo)
         {
             repo = _repo;
@@ -26,6 +28,13 @@ namespace CheapWare.API.Controllers
         public async Task<ActionResult<List<Inventory>>> GetInventory()
         {
             return await repo.GetInventory();
+        }
+        [HttpPut]
+        [Route("UpdateInventory", Name ="UpdateInventory")]
+        public async Task UpdateInventory(Inventory inv)
+        {
+            repo.UpdateInventory(inv);
+            await repo.Save();
         }
 
         // GET: api/GraphicsCards/5

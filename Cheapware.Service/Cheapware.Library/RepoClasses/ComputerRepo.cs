@@ -224,5 +224,9 @@ namespace Cheapware.Library.RepoClasses
         {
             return Mapper.Map(await db.Carts.Where(x => x.CustomerId == id).ToListAsync());
         }
+        public void UpdateInventory(Inventory inv)
+        {
+             db.Inventorys.Update(Mapper.Map(inv));
+        }
     }
 }

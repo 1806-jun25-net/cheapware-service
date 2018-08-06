@@ -53,6 +53,8 @@ namespace Cheapware.Library.RepoClasses
         Task<Inventory> GetProductByName(string name);
         Task<List<Inventory>> GetInventoryByCart(List<string> items);
         Task<List<Inventory>> GetInventoryBySearch(string search = null);
+        void UpdateInventory(Inventory inv);
+
         //Order Repo Methods
         Task<List<PartsOrder>> GetOrdersByCustomerId(int id);
         void AddOrder(PartsOrder order);

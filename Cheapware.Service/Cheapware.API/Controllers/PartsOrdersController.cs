@@ -40,7 +40,7 @@ namespace CheapWare.API.Controllers
             };
             foreach (var item in inv)
             {
-                price += item.Price;
+                price += (decimal)item.Price;
             }
             order.FinalPrice = price;
             repo.AddOrder(order);
