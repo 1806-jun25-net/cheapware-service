@@ -7,7 +7,7 @@ using Cheapware.Library.Models;
 using Cheapware.Library.RepoClasses;
 namespace CheapWare.API.Controllers
 {
-    [Route("api/Orders")]
+    [Route("api/Orders/")]
     [ApiController]
     public class PartsOrdersController : Controller
     {
@@ -23,6 +23,33 @@ namespace CheapWare.API.Controllers
         public async Task<ActionResult<PartsOrder>> GetOrderById(int id)
         {
             return await repo.GetOrderById(id);
+        }
+
+
+        [HttpPost]
+        [Route("PlaceOrder", Name = "PlaceOrder")]
+        public async Task<ActionResult<PartsOrder>> PlaceOrder(List<Inventory> inv)
+        {
+            decimal price = 0;
+            var cust = await repo.GetCustomerByUserName(User.Identity.Name);
+            PartsOrder order = new PartsOrder()
+            {
+                CustomerId = cust.CustomerId,
+                TimeOfOrder = DateTime.Now
+
+            };
+            foreach (var item in inv)
+            {
+                price += item.Price;
+            }
+            order.FinalPrice = price;
+            repo.AddOrder(order);
+            await repo.Save();
+            var orderId = await repo.GetRecentOrderByCustomerId(order.CustomerId);
+            repo.AddJunction(orderId, inv);
+            await repo.DeleteCartByCustomer(cust.CustomerId);
+            await repo.Save();
+            return order;
         }
 
 

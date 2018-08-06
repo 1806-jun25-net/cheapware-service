@@ -198,6 +198,28 @@ namespace Cheapware.Library.RepoClasses
         {
             db.Carts.Remove(await db.Carts.FindAsync(cartId));
         }
+
+        public async Task<int> GetRecentOrderByCustomerId(int id)
+        { 
+
+            var orders = await db.PartsOrders.Where(x => x.CustomerId == id).ToListAsync();
+
+            var orderId = orders.OrderByDescending(x => x.TimeOfOrder).First().OrderId;
+            return orderId;
+        }
+
+        public void AddJunction(int id, List<Inventory> names)
+        {
+            foreach(var item in names)
+            {
+                PartsJunctions pj = new PartsJunctions()
+                {
+                    OrderId = id,
+                    Name = item.Name
+                };
+                db.PartsJunctions.Add(pj);
+            }
+        }
         public async Task<List<Cart>> CartIdsByCustomer(int id)
         {
             return Mapper.Map(await db.Carts.Where(x => x.CustomerId == id).ToListAsync());

@@ -57,6 +57,9 @@ namespace Cheapware.Library.RepoClasses
         Task<List<PartsOrder>> GetOrdersByCustomerId(int id);
         void AddOrder(PartsOrder order);
         Task<PartsOrder> GetOrderById(int id);
+        Task<int> GetRecentOrderByCustomerId(int id);
+        //Junction Method
+        void AddJunction(int id, List<Inventory> names);
 
         //Cart Repo Methods
         Task<List<Inventory>> GetCartByCustomerId(int id);
