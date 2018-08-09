@@ -30,16 +30,16 @@ CREATE TABLE Cheap.Inventorys
 	Price MONEY NOT NULL,
 	Img NVARCHAR(128) NOT NULL
 );
-UPDATE Cheap.ComputerCases
-SET Name = 'Corsair Crystal Series RGB Steel Tempered Glass ATX Mid Tower Case'
-WHERE Name = 'Corsair Crystal Series RGB Steel / Tempered Glass ATX Mid Tower Case'
-
 UPDATE Cheap.Inventorys
-SET Img = 'motherboard3.jpg'
-WHERE Img = 'motherboards3.jpg'
+SET Name = 'Sapphire Radeon NITRO RX 580 8GB PCI-E Backplate SPECIAL EDITION'
+WHERE Name = 'Sapphire Radeon NITRO+ RX 580 8GB PCI-E Backplate SPECIAL EDITION'
 
-DELETE FROM Cheap.MotherBoards
-WHERE Img = 'motherboards3.jpg'
+UPDATE Cheap.GraphicsCards
+SET Img = 'graphicscard1.jpg'
+WHERE Img = 'graphicsCard1.jpg'
+
+DELETE FROM Cheap.GraphicsCards
+WHERE Img = 'graphicscard2.jpg'
 
 
 
@@ -112,7 +112,8 @@ CREATE TABLE Cheap.GraphicsCards
 	Img NVARCHAR(128) NOT NULL
 );
 
-
+INSERT INTO Cheap.GraphicsCards
+VALUES('Sapphire Radeon NITRO RX 580 8GB PCI-E Backplate SPECIAL EDITION', '1600 Mhz', '6GB', 359.99, 'graphicscard2.jpg')
 
 --DROP TABLE Cheap.HardDrives
 CREATE TABLE Cheap.HardDrives
